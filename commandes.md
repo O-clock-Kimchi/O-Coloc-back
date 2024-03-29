@@ -7,4 +7,6 @@ npm i @faker-js/faker
 npm install --save-dev sequelize-cli
 <!-- Créer/exécuter les tables dans la base de données -->
 <!-- Effectuer la migration dans l'ordre des tables en spécifiant le nom du fichier -->
-npx sequelize-cli db:migrate --to nom_du_fichier de migration
+npx sequelize-cli db:migrate
+npx sequelize-cli db:migrate --to 20240329-create-users.js --from 20240329-create-tasks.js
+npx sequelize-cli db:migrate --to 20240329-create-tasks.js
