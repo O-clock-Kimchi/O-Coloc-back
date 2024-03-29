@@ -1,0 +1,23 @@
+{
+    "development": {
+        "username": "cohabit_admin",
+        "password": "moucherons",
+        "database": "cohabit",
+        "host": "127.0.0.1",
+        "dialect": "postgres"
+    },
+    "test": {
+        "username": "cohabit_admin",
+        "password": "moucherons",
+        "database": "cohabit",
+        "host": "127.0.0.1",
+        "dialect": "postgres"
+    },
+    "production": {
+        "username": "cohabit_admin",
+        "password": "moucherons",
+        "database": "cohabit",
+        "host": "127.0.0.1",
+        "dialect": "postgres"
+    }
+}

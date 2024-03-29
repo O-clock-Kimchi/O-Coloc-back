@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS "users" (
     "firstname" TEXT NOT NULL,
     "email" TEXT NOT NULL UNIQUE,
     "password" TEXT NOT NULL,
-    "color" VARCHAR(7) NOT NULL
+    "color" VARCHAR(7) NOT NULL UNIQUE
 );
 
 -- Creation of the 'colocs' table
@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS "colocs" (
     "name" TEXT NOT NULL,
     "groupe_code_valid" TEXT UNIQUE,
     "date_creation" DATE NOT NULL,
-    "lien_coloc" TEXT NOT NULL
+    "lien_coloc" TEXT NOT NULL UNIQUE
 );
 
 -- Creation of the 'tasks' table
