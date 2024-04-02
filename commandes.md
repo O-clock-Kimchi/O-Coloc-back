@@ -10,3 +10,6 @@ npm install --save-dev sequelize-cli
 npx sequelize-cli db:migrate
 npx sequelize-cli db:migrate --to 20240329-create-users.js --from 20240329-create-tasks.js
 npx sequelize-cli db:migrate --to 20240329-create-tasks.js
+
+<!-- Fonctionnalité de correction automatique pour certaines règles -->
+npx eslint . --fix
