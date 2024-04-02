@@ -1,18 +1,21 @@
+/* eslint-disable import/extensions */
 /* eslint-disable linebreak-style */
 const express = require('express');
 
 const app = express();
 
-// Middlewares
-app.use(express.json()); // to parse the JSON
+// Middleware pour parser le body des requêtes en JSON
+app.use(express.json());
 
-// Routers
-app.get('/', (req, res) => {
-    res.send('Bienvenue sur Cohabit');
+// Route de test pour s'assurer que l'API fonctionne
+app.get('/', (_, res) => {
+    res.send('Bienvenue sur Cohabit!');
 });
 
-// Démarrage du serveur
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-    console.log(`Le serveur est fonctionnel sur le port ${PORT}`);
+// Synchronisation des modèles avec la base de données et démarrage du serveur
+app.set('port', process.env.PORT || 5000);
+app.set('base_url', process.env.BASE_URL || 'http://localhost');
+
+app.listen(app.get('port'), () => {
+    console.log(`Listening on ${app.get('base_url')}:${app.get('port')}`);
 });
