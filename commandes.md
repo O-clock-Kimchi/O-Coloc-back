@@ -13,3 +13,10 @@ npx sequelize-cli db:migrate --to 20240329-create-tasks.js
 
 <!-- Fonctionnalité de correction automatique pour certaines règles -->
 npx eslint . --fix
+
+<!-- Au fil du projet, on se rends compte que pour définir une association pour qu'un Users puisse créer plusieurs Colocs (dans la vie du compte) mais qu'il puisse appartenir qu'à une seule Colocs -->
+<!-- Pour cela nous faisons une nouvelle migration Sequelize pour MAJ la BDD -->
+npx sequelize migration:generate --name add-userid-to-colocs
+npx sequelize migration:generate --name add-currentcolocid-to-users
+
+

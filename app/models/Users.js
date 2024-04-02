@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 /* eslint-disable comma-dangle */
 /* eslint-disable linebreak-style */
 // models/User.js
@@ -30,6 +31,14 @@ User.init({
         type: DataTypes.STRING(7),
         allowNull: false,
         unique: true
+    },
+    current_coloc_id: {
+        type: DataTypes.INTEGER,
+        references: {
+        model: 'colocs',
+        key: 'coloc_id'
+        },
+        allowNull: true
     }
 }, {
     sequelize,

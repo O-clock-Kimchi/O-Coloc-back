@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 /* eslint-disable comma-dangle */
 /* eslint-disable linebreak-style */
 // models/Coloc.js
@@ -29,6 +30,14 @@ Coloc.init({
         type: DataTypes.TEXT,
         allowNull: false,
         unique: true
+    },
+    user_id: {
+        type: DataTypes.INTEGER,
+        references: {
+        model: 'users',
+        key: 'user_id'
+        },
+        allowNull: false
     }
 }, {
     sequelize,
