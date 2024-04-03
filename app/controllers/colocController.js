@@ -2,7 +2,7 @@ const Colocs = require('../models/Colocs');
 
 const colocController = {
     
-    // Récupérer notre colocation
+    // Reclaim our coloc
     async show(req, res) {
         try {
             const id = req.params.id;
@@ -18,7 +18,7 @@ const colocController = {
         }
     },
 
-    // Modifier nom de la coloc
+    // Change coloc name
     async update(req, res) {
         try {
             const id = req.params.id;
@@ -36,7 +36,7 @@ const colocController = {
         }
     },
 
-    // Supprimer la colocation
+    // Delete coloc
     async destroy(req, res) {
         try {
             const id = req.params.id;
@@ -53,7 +53,7 @@ const colocController = {
         }
     },
 
-    // Créer une colocation
+    // Create new coloc
     async create(req, res) {
         try {
             const { name, lien_coloc, user_id } = req.body;
