@@ -3,11 +3,19 @@ POST http://localhost:5000/colocs
 Content-Type: application/json
 
 {
-    "name": "Les Fous"
+    "lien_coloc":"azertyui",
+    "name": "Les Fous",
+    "user_id": 1
 }
 
 ###recuperer une coloc
 GET http://localhost:5000/colocs/2
 Content-Type: application/json
 
+###mettre a jour coloc
+PATCH http://localhost:5000/colocs/2
+Content-Type: application/json
 
+###supprimer une coloc
+DELETE http://localhost:5000/colocs/2
+Content-Type: application/json
