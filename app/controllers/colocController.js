@@ -56,8 +56,8 @@ const colocController = {
     // Créer une colocation
     async create(req, res) {
         try {
-            const { name } = req.body;
-            const newColoc = await Colocs.create({ name});
+            const { name, lien_coloc, user_id } = req.body;
+            const newColoc = await Colocs.create({ name, lien_coloc, user_id});
             res.status(201).json(newColoc);
         } catch (error) {
             console.error('Erreur lors de la création de la colocation :', error);
