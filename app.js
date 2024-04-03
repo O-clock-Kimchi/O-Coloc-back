@@ -3,6 +3,7 @@
 const express = require('express');
 
 const app = express();
+const router= require('./app/router');
 
 // Middleware pour parser le body des requêtes en JSON
 app.use(express.json());
@@ -11,6 +12,7 @@ app.use(express.json());
 app.get('/', (_, res) => {
     res.send('Bienvenue sur Cohabit!');
 });
+app.use(router);
 
 // Synchronisation des modèles avec la base de données et démarrage du serveur
 app.set('port', process.env.PORT || 5000);
