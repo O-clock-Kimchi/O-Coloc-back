@@ -7,7 +7,8 @@ router.patch('/colocs/:id', colocController.update);
 router.delete('/colocs/:id', colocController.destroy);
 
 router.post('/colocs/join', colocController.join);
-// router.post('/colocs/:id/users/:id/leave', colocController.handleUserLeave);
+
+// router.post('/colocs/:id/leave', colocController.handleUserLeave);
 
 
 module.exports = router;
