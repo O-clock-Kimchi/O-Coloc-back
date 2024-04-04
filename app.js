@@ -3,7 +3,7 @@
 const express = require('express');
 
 const app = express();
-const router= require('./app/router');
+const router= require('./app/colocRouter');
 require('dotenv').config();
 
 // Middleware pour parser le body des requêtes en JSON
