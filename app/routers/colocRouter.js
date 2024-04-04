@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const colocController = require('./controllers/colocController');
+const colocController = require('../controllers/colocController');
 
 router.post('/colocs/create', colocController.create);
 router.get('/colocs/:id', colocController.show);
