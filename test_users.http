@@ -1,0 +1,37 @@
+###creer route SIGNUP en post
+POST http://localhost:5000/signup
+Content-Type: application/json
+
+{
+    "firstname":"Mickael",
+    "email":"mickael@gmail.com",
+    "password":"Micka1245",
+    "color": "#TR0158"
+    
+}
+
+###creer route LOGIN en post
+POST http://localhost:5000/login
+Content-Type: application/json
+
+{
+    "email":"mickael@gmail.com",
+    "password":"Micka1245"  
+}
+
+###creer route UPDATE en put/update
+
+PUT http://localhost:5000/user/39/profile
+Content-Type: application/json
+
+{
+    "firstname": "Micka",
+    "email": "",
+    "color": "",
+    "password": ""
+}
+
+###creer route DELETE en delete
+DELETE http://localhost:5000/user/39/delete
+Cookie: connect.sid=s%3A6wVxhnBMgpkHQyNMlROhpBfwVrZzsyyc.BKT%2B4uWZCIHUILk3oq4pRQgZY8WuOD3nl05syfgvaic; Path=/; HttpOnly
+Content-Type: application/json

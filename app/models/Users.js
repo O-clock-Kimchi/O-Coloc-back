@@ -5,9 +5,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../data/database');
 
-class User extends Model {}
+class Users extends Model {}
 
-User.init({
+Users.init({
     user_id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
@@ -30,10 +30,11 @@ User.init({
     color: {
         type: DataTypes.STRING(7),
         allowNull: false,
-        unique: true
+        // unique: true
     },
     current_coloc_id: {
         type: DataTypes.INTEGER,
+        allowNull: true,
         references: {
         model: 'colocs',
         key: 'coloc_id'
@@ -49,10 +50,11 @@ User.init({
         allowNull: true
     }
 }, {
-    sequelize,
-    modelName: 'Users',
-    tableName: 'users',
-    timestamps: false
+    sequelize, // L'instance Sequelize que vous avez créée
+    modelName: 'Users', // Le nom du modèle
+    tableName: 'users', // Le nom de la table dans la base de données
+    timestamps: false, // Indique si les colonnes createdAt et updatedAt doivent être créées automatiquement
+    underscored: true, // Utilisation de la convention snake_case pour les noms de colonnes
 });
 
-module.exports = User;
+module.exports = Users;
