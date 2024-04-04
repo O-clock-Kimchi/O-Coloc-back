@@ -9,11 +9,11 @@ Content-Type: application/json
 }
 
 ###recuperer une coloc
-GET http://localhost:5000/colocs/8
+GET http://localhost:5000/colocs/9
 Content-Type: application/json
 
 ###mettre a jour coloc
-PATCH http://localhost:5000/colocs/8
+PATCH http://localhost:5000/colocs/9
 Content-Type: application/json
 
 {
@@ -21,7 +21,7 @@ Content-Type: application/json
 }
 
 ###supprimer une coloc
-DELETE http://localhost:5000/colocs/6
+DELETE http://localhost:5000/colocs/9
 Content-Type: application/json
 
 ###rejoindre une coloc en post
@@ -29,5 +29,5 @@ POST http://localhost:5000/colocs/join
 Content-Type: application/json
 
 {
-    "groupe_code_valid":"12345678"
+    "groupe_code_valid":"72279838"
 }
