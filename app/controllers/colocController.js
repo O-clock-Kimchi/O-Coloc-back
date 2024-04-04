@@ -1,7 +1,7 @@
 const Colocs = require('../models/Colocs');
 const {  isValidName, isValidNameRegex } = require('../utils/fonctions.js');
 
-
+const bcrypt = require('bcrypt');
 
 
 const colocController = {
