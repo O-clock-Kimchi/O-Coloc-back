@@ -9,7 +9,7 @@ require('dotenv').config();
 
 // Configuration de CORS
 app.use(cors({
-    origin: '*', // Autorise les requêtes uniquement depuis ce domaine
+    origin: '*',
     methods: ['GET', 'POST', 'PUT', 'DELETE'], // Méthodes HTTP autorisées
     allowedHeaders: ['Content-Type', 'Authorization'], // En-têtes autorisés
 }));
