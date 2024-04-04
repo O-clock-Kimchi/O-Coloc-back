@@ -1,21 +1,33 @@
-###creer route en post
-POST http://localhost:5000/colocs
+###creer coloc en post
+POST http://localhost:5000/colocs/create
 Content-Type: application/json
 
 {
-    "lien_coloc":"azertyui",
-    "name": "Les Fous",
+    
+    "name": "Test",
     "user_id": 1
 }
 
 ###recuperer une coloc
-GET http://localhost:5000/colocs/2
+GET http://localhost:5000/colocs/8
 Content-Type: application/json
 
 ###mettre a jour coloc
-PATCH http://localhost:5000/colocs/2
+PATCH http://localhost:5000/colocs/8
 Content-Type: application/json
 
+{
+    "name":"Marche"
+}
+
 ###supprimer une coloc
-DELETE http://localhost:5000/colocs/2
+DELETE http://localhost:5000/colocs/6
 Content-Type: application/json
+
+###rejoindre une coloc en post
+POST http://localhost:5000/colocs/join
+Content-Type: application/json
+
+{
+    "groupe_code_valid":"12345678"
+}
