@@ -19,6 +19,11 @@ npx eslint . --fix
 npx sequelize migration:generate --name add-userid-to-colocs
 npx sequelize migration:generate --name add-currentcolocid-to-users
 
-<!--  -->
+<!-- Nous permettra de gérer les dates pour la fréquence des tâches -->
 npm install dayjs
 
+<!-- nodemailer est un module qui permet d'envoyer des e-mails facilement depuis Node.js. pour le Reset Password -->
+npm install nodemailer
+
+<!-- Pour configurer les CORS sur le serveur backend et autoriser les requêtes coté frontend -->
+npm install cors

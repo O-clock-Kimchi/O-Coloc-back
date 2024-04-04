@@ -1,9 +1,18 @@
 /* eslint-disable linebreak-style */
 const express = require('express');
 
+const cors = require('cors');
+
 const app = express();
 const router = require('./app/routers/testRouter');
 require('dotenv').config();
+
+// Configuration de CORS
+app.use(cors({
+    origin: '*', // Autorise les requêtes uniquement depuis ce domaine
+    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Méthodes HTTP autorisées
+    allowedHeaders: ['Content-Type', 'Authorization'], // En-têtes autorisés
+}));
 
 // Middleware pour parser le body des requêtes en JSON
 app.use(express.json());

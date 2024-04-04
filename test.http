@@ -31,3 +31,32 @@ Content-Type: application/json
 ### Delete Task
 DELETE http://172.25.192.189:5000/tasks/1
 Content-Type: application/json
+
+
+----------------------------RESET PASSWORD--------------------------
+
+### Demande de réinitialisation du mot de passe
+POST http://172.25.192.189:5000/password-reset/request-reset
+Content-Type: application/json
+
+{
+    "email": "user@example.com"
+}
+
+### Valider le token de réinitialisation du mot de passe
+### Remplace :token par le token réel reçu par email
+GET http://172.25.192.189:5000/password-reset/validate-reset-token/:token
+
+###
+
+### Réinitialiser le mot de passe
+### Assure-toi de remplacer :userId par l'identifiant de l'utilisateur
+### et :token par le token réel
+POST http://172.25.192.189:5000/password-reset/reset-password
+Content-Type: application/json
+
+{
+    "userId": 1,
+    "token": "leTokenRéelIci",
+    "newPassword": "nouveauMotDePasse"
+}
