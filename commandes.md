@@ -19,4 +19,6 @@ npx eslint . --fix
 npx sequelize migration:generate --name add-userid-to-colocs
 npx sequelize migration:generate --name add-currentcolocid-to-users
 
+<!--  -->
+npm install dayjs
 

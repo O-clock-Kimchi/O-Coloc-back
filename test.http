@@ -1,0 +1,33 @@
+###Créer une nouvelle tâche
+POST http://172.25.192.189:5000/tasks
+Content-Type: application/json
+
+{
+    "description": "Acheter des vivres",
+    "is_predefined": false,
+    "is_done": false,
+    "frequency": 7,
+    "user_id": 1
+}
+
+### Get All Tasks
+GET http://172.25.192.189:5000/tasks
+Content-Type: application/json
+
+
+### Update Task
+PUT http://172.25.192.189:5000/tasks/1
+Content-Type: application/json
+
+{
+    "description": "Acheter des vivres et des boissons",
+    "is_predefined": false,
+    "is_done": true,
+    "frequency": 7,
+    "user_id": 1
+}
+
+
+### Delete Task
+DELETE http://172.25.192.189:5000/tasks/1
+Content-Type: application/json
