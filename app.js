@@ -4,9 +4,9 @@ const session = require('express-session');
 const cors = require('cors');
 
 const app = express();
-const router = require('./app/routers/testRouter');
+// const router = require('./app/routers/testRouter');
 const router = require('./app/routers/router');
-const router= require('./app/colocRouter');
+// const router= require('./app/colocRouter');
 require('dotenv').config();
 
 // Configuration de CORS
