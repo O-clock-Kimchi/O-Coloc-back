@@ -24,7 +24,7 @@ Coloc.init({
     },
     date_creation: {
         type: DataTypes.DATE,
-        defaultValue: DataTypes.literal('CURRENT_TIMESTAMP'),
+        defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
         allowNull: false
     },
     lien_coloc: {

@@ -1,8 +1,20 @@
-/* eslint-disable import/extensions */
 /* eslint-disable linebreak-style */
 const express = require('express');
+const session = require('express-session');
+const cors = require('cors');
 
 const app = express();
+const router = require('./app/routers/testRouter');
+const router = require('./app/routers/router');
+const router= require('./app/colocRouter');
+require('dotenv').config();
+
+// Configuration de CORS
+app.use(cors({
+    origin: '*',
+    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Méthodes HTTP autorisées
+    allowedHeaders: ['Content-Type', 'Authorization'], // En-têtes autorisés
+}));
 
 // Middleware pour parser le body des requêtes en JSON
 app.use(express.json());
@@ -11,6 +23,15 @@ app.use(express.json());
 app.get('/', (_, res) => {
     res.send('Bienvenue sur Cohabit!');
 });
+
+// Configuration du middleware express-session
+app.use(session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: true
+}));
+
+app.use(router);
 
 // Synchronisation des modèles avec la base de données et démarrage du serveur
 app.set('port', process.env.PORT || 5000);
