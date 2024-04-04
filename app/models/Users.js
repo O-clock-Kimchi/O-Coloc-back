@@ -39,6 +39,14 @@ User.init({
         key: 'coloc_id'
         },
         allowNull: true
+    },
+    resetPasswordToken: {
+        type: DataTypes.STRING,
+        allowNull: true
+    },
+    resetPasswordExpires: {
+        type: DataTypes.DATE,
+        allowNull: true
     }
 }, {
     sequelize,

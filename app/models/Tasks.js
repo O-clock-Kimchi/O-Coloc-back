@@ -18,7 +18,7 @@ Task.init({
     },
     created_at: {
         type: DataTypes.DATE(6),
-        defaultValue: DataTypes.literal('CURRENT_TIMESTAMP'),
+        defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
         allowNull: false
     },
     is_predefined: {
@@ -48,7 +48,8 @@ Task.init({
     sequelize,
     modelName: 'Tasks',
     tableName: 'tasks',
-    timestamps: true
+    underscored: true,
+    timestamps: false
 });
 
 module.exports = Task;
