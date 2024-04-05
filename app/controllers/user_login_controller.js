@@ -1,3 +1,8 @@
+/* eslint-disable import/order */
+/* eslint-disable consistent-return */
+/* eslint-disable no-trailing-spaces */
+/* eslint-disable quotes */
+/* eslint-disable eol-last */
 const Users = require('../models/Users');
 const bcrypt = require('bcrypt');
 

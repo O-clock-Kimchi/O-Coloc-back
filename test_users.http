@@ -3,10 +3,10 @@ POST http://172.25.192.189:5000/signup
 Content-Type: application/json
 
 {
-    "firstname":"Eickael",
-    "email":"eickael@gmail.com",
-    "password":"Eicka1245",
-    "color": "#TR0159"
+    "firstname":"aude",
+    "email":"auaude@gmail.com",
+"password":"Auause1245",
+    "color": "#TA0159"
     
 }
 
@@ -15,8 +15,8 @@ POST http://172.25.192.189:5000/login
 Content-Type: application/json
 
 {
-    "email":"eickael@gmail.com",
-    "password":"Eicka1245"  
+    "email":"auaude@gmail.com",
+    "password":"Auause1245"  
 }
 
 ###creer route UPDATE en put/update

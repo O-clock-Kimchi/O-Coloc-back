@@ -1,15 +1,16 @@
 ###creer coloc en post
-POST http://172.25.192.189:5000/colocs/create
+POST http://172.25.192.189:5000/user/3/colocs/create
+Cookie:connect.sid=s%3ApLI1UIeenVr7vsmqgePCHHoBQFvSKZNk.BttR8P65BmfOQd7mX%2Bx62cCs2cwEggl2Isv0ad68pwI; Path=/; HttpOnly
 Content-Type: application/json
 
 {
     
-    "name": "Test",
-    "user_id": 2
+    "name": "test cookie"
 }
 
 ###recuperer une coloc
-GET http://172.25.192.189:5000/colocs/2
+GET http://172.25.192.189:5000/user/3/colocs/2
+Cookie: connect.sid=s%3AGG19Y3ESQS-5j-V3e7qL0GdW6gZfwJIh.5xbEy8Wi9JyiErV%2Fr6aeh0FF%2FztFb91%2BGeOGksTRNho; Path=/; HttpOnly
 Content-Type: application/json
 
 ###mettre a jour coloc
@@ -25,9 +26,15 @@ DELETE http://localhost:5000/colocs/9
 Content-Type: application/json
 
 ###rejoindre une coloc en post
-POST http://localhost:5000/colocs/join
+POST http://172.25.192.189:5000/user/4/colocs/join
+Cookie:connect.sid=s%3AHa_cskGhzZtdQbhhgTLjJcyXcbNFttuX.ZDoBNJyUCWc44ZvTYkM8uvCvzjJS0rjs4SixbVrB1dk; Path=/; HttpOnly
 Content-Type: application/json
 
 {
-    "groupe_code_valid":"72279838"
+    "groupe_code_valid":"33128782"
 }
+
+###quitter une coloc en post
+POST http://172.25.192.189:5000/colocs/2/leave
+Cookie:connect.sid=s%3AHa_cskGhzZtdQbhhgTLjJcyXcbNFttuX.ZDoBNJyUCWc44ZvTYkM8uvCvzjJS0rjs4SixbVrB1dk; Path=/; HttpOnly
+Content-Type: application/json

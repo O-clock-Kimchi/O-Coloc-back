@@ -40,7 +40,7 @@ POST http://172.25.192.189:5000/password-reset/request-reset
 Content-Type: application/json
 
 {
-    "email": "user@example.com"
+    "email": "auaude@gmail.com"
 }
 
 ### Valider le token de réinitialisation du mot de passe

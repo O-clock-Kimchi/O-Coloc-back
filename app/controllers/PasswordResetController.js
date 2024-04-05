@@ -37,8 +37,8 @@ async requestPasswordReset(req, res) {
 
     // Enregistrer le token et sa date d'expiration en base de données
     await user.update({
-        resetPasswordToken: resetToken,
-        resetPasswordExpires: resetTokenExpires
+        reset_password_token: resetToken,
+        reset_password_expires: resetTokenExpires
     });
 
     // Créer l'URL de réinitialisation
@@ -70,8 +70,8 @@ async resetPassword(req, res) {
     const user = await User.findOne({
     where: {
         id: userId,
-        resetPasswordToken: token,
-        resetPasswordExpires: { [Sequelize.Op.gt]: Date.now() }
+        reset_password_token: token,
+        reset_password_expires: { [Sequelize.Op.gt]: Date.now() }
     }
     });
 
@@ -84,8 +84,8 @@ async resetPassword(req, res) {
 
     await user.update({
         password: hashedPassword,
-        resetPasswordToken: null, // Nettoyer le token après la réinitialisation
-        resetPasswordExpires: null
+        reset_password_token: null, // Nettoyer le token après la réinitialisation
+        reset_password_expires: null
     });
 
     res.status(200).json({ message: 'Mot de passe réinitialisé avec succès.' });
@@ -96,8 +96,8 @@ async validateResetToken(req, res) {
     const { token } = req.params;
     const user = await User.findOne({
     where: {
-        resetPasswordToken: token,
-        resetPasswordExpires: { [Sequelize.Op.gt]: Date.now() } // Vérifie si le token n'est pas expiré
+        reset_password_token: token,
+        reset_password_expires: { [Sequelize.Op.gt]: Date.now() } // Vérifie si le token n'est pas expiré
 }
 });
 
