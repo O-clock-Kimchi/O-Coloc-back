@@ -1,3 +1,4 @@
+/* eslint-disable comma-dangle */
 /* eslint-disable linebreak-style */
 const express = require('express');
 const session = require('express-session');
@@ -18,6 +19,9 @@ app.use(cors({
 
 // Middleware pour parser le body des requêtes en JSON
 app.use(express.json());
+
+// Middleware pour analyser les données de formulaire URL-encoded
+app.use(express.urlencoded({ extended: true }));
 
 // Route de test pour s'assurer que l'API fonctionne
 app.get('/', (_, res) => {

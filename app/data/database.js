@@ -19,7 +19,7 @@ const getConnexion = new Sequelize(
         },
             host: 'localhost',
             dialect: 'postgres',
-            logging: false,
+            logging: true,
 });
 
 module.exports = getConnexion;
