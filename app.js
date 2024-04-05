@@ -5,9 +5,8 @@ const session = require('express-session');
 const cors = require('cors');
 
 const app = express();
-// const router = require('./app/routers/testRouter');
-const router = require('./app/routers/router');
-// const router= require('./app/colocRouter');
+const router = require('./app/router.js');
+
 require('dotenv').config();
 
 // Configuration de CORS
@@ -22,11 +21,6 @@ app.use(express.json());
 
 // Middleware pour analyser les données de formulaire URL-encoded
 app.use(express.urlencoded({ extended: true }));
-
-// Route de test pour s'assurer que l'API fonctionne
-app.get('/', (_, res) => {
-    res.send('Bienvenue sur Cohabit!');
-});
 
 // Configuration du middleware express-session
 app.use(session({

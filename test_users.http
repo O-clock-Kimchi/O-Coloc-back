@@ -1,27 +1,27 @@
 ###creer route SIGNUP en post
-POST http://localhost:5000/signup
+POST http://172.25.192.189:5000/signup
 Content-Type: application/json
 
 {
-    "firstname":"Mickael",
-    "email":"mickael@gmail.com",
-    "password":"Micka1245",
-    "color": "#TR0158"
+    "firstname":"Eickael",
+    "email":"eickael@gmail.com",
+    "password":"Eicka1245",
+    "color": "#TR0159"
     
 }
 
 ###creer route LOGIN en post
-POST http://localhost:5000/login
+POST http://172.25.192.189:5000/login
 Content-Type: application/json
 
 {
-    "email":"mickael@gmail.com",
-    "password":"Micka1245"  
+    "email":"eickael@gmail.com",
+    "password":"Eicka1245"  
 }
 
 ###creer route UPDATE en put/update
 
-PUT http://localhost:5000/user/39/profile
+PUT http://localhost:5000/user/2/profile
 Content-Type: application/json
 
 {

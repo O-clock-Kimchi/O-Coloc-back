@@ -1,19 +1,19 @@
 ###creer coloc en post
-POST http://localhost:5000/colocs/create
+POST http://172.25.192.189:5000/colocs/create
 Content-Type: application/json
 
 {
     
     "name": "Test",
-    "user_id": 1
+    "user_id": 2
 }
 
 ###recuperer une coloc
-GET http://localhost:5000/colocs/9
+GET http://172.25.192.189:5000/colocs/2
 Content-Type: application/json
 
 ###mettre a jour coloc
-PATCH http://localhost:5000/colocs/9
+PATCH http://172.25.192.189:5000/colocs/2
 Content-Type: application/json
 
 {

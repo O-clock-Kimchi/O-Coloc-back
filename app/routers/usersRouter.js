@@ -1,15 +1,19 @@
+/* eslint-disable eol-last */
+/* eslint-disable import/newline-after-import */
+/* eslint-disable comma-dangle */
+/* eslint-disable spaced-comment */
 // userRouter.js
 
 const express = require('express');
 const session = require('express-session');
-const router = express.Router();
-
+const usersRouter = express.Router();
+const app = express();
 // Configuration du middleware express-session pour ce routeur spécifique
-router.use(session({
-    secret: process.env.SESSION_SECRET,
-    resave: false,
-    saveUninitialized: true
-}));
+// app.use(session({
+//     secret: process.env.SESSION_SECRET,
+//     resave: false,
+//     saveUninitialized: true
+// }));
 
 // Importer les contrôleurs
 const { signup } = require('../controllers/user_signup_controller');
@@ -18,15 +22,16 @@ const { updateProfile } = require('../controllers/user_update_controller');
 const { deleteProfile } = require('../controllers/user_delete_controller');
 
 // Route pour l'inscription d'un nouvel utilisateur
-router.post('/signup', signup);
+usersRouter.post('/signup', signup);
 
 // Route pour la connexion de l'utilisateur
-router.post('/login', login) 
+usersRouter.post('/login', login);
 
 //Route pour la mise à jour du profil d'un utilisateur connecté
-router.put('/user/:userId/profile', updateProfile);
+usersRouter.put('/user/:userId/profile', updateProfile);
 
 //Route pour la suppression d'un compte utilisateur (utilisateur connecté)
-router.delete('/user/:userId/delete', deleteProfile);
+usersRouter.delete('/user/:userId/delete', deleteProfile);
 
-module.exports = router;
+// module.exports = usersRouter;
+module.exports = usersRouter;

@@ -1,8 +1,8 @@
+/* eslint-disable prefer-template */
 /* eslint-disable function-paren-newline */
 /* eslint-disable eol-last */
 /* eslint-disable comma-dangle */
 /* eslint-disable indent */
-
 
 const { Sequelize } = require('sequelize');
 require('dotenv').config();
@@ -19,7 +19,7 @@ const getConnexion = new Sequelize(
         },
             host: 'localhost',
             dialect: 'postgres',
-            logging: true,
+            logging: (message) => console.log(new Date().toISOString() + ': ' + message),
 });
 
 module.exports = getConnexion;
