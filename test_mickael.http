@@ -16,7 +16,7 @@ Content-Type: application/json
 
 
 ### Update Task
-PUT http://172.25.192.189:5000/tasks/1
+PUT http://172.25.192.189:5000/tasks/6
 Content-Type: application/json
 
 {
@@ -29,7 +29,7 @@ Content-Type: application/json
 
 
 ### Delete Task
-DELETE http://172.25.192.189:5000/tasks/1
+DELETE http://172.25.192.189:5000/tasks/6
 Content-Type: application/json
 
 

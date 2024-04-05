@@ -3,10 +3,10 @@ POST http://172.25.192.189:5000/signup
 Content-Type: application/json
 
 {
-    "firstname":"aude",
-    "email":"auaude@gmail.com",
-"password":"Auause1245",
-    "color": "#TA0159"
+    "firstname":"Nono",
+    "email":"nono@gmail.com",
+    "password":"Nonoellie321",
+    "color": "#343434"
     
 }
 
@@ -15,23 +15,23 @@ POST http://172.25.192.189:5000/login
 Content-Type: application/json
 
 {
-    "email":"auaude@gmail.com",
-    "password":"Auause1245"  
+    "email":"nono@gmail.com",
+    "password":"Nonoellie321"  
 }
 
 ###creer route UPDATE en put/update
 
-PUT http://localhost:5000/user/2/profile
+PUT http://172.25.192.189:5000/user/5/profile
 Content-Type: application/json
 
 {
-    "firstname": "Micka",
+    "firstname": "NoellieTheBest",
     "email": "",
     "color": "",
     "password": ""
 }
 
 ###creer route DELETE en delete
-DELETE http://localhost:5000/user/39/delete
-Cookie: connect.sid=s%3A6wVxhnBMgpkHQyNMlROhpBfwVrZzsyyc.BKT%2B4uWZCIHUILk3oq4pRQgZY8WuOD3nl05syfgvaic; Path=/; HttpOnly
+DELETE http://172.25.192.189:5000/user/5/delete
+Cookie: connect.sid=s%3AtSL0v_3J-Ibu5uzqhhF8x3uEbDQZDQR-.u7rhilKQmFxy6AcUeUYlo%2FUb97FoPNuL%2FGJayn9YcS8; Path=/; HttpOnly
 Content-Type: application/json

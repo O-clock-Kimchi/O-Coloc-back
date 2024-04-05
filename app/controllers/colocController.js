@@ -132,6 +132,7 @@ const colocController = {
             res.status(500).json({ message: 'Erreur lors de la vérification du code pour accéder à la colocation' });
         }
     },
+    // leave a coloc
     async handleUserLeave(req, res){
         try{
             if (!req.session.userId) {
@@ -143,9 +144,18 @@ const colocController = {
                 return res.status(404).json({ message: "Utilisateur non trouvé." });
             }
             
-            await generateCodeOnUserLeave(user.current_coloc_id);
+            const colocId = user.current_coloc_id;
+
+            await generateCodeOnUserLeave(colocId);
 
             await Users.update({ current_coloc_id: null }, { where: { user_id: req.session.userId } });
+
+            const countUsersInColoc = await Users.count({ where: { current_coloc_id: colocId } });
+            if (countUsersInColoc === 0) {
+                await Colocs.destroy({ where: { coloc_id: colocId } });
+                return res.status(200).json({ message: "Utilisateur a quitté la colocation avec succès. La colocation a été supprimée car elle est vide." });
+            }
+
             return res.status(200).json({ message: "Utilisateur a quitté la colocation avec succès." });
             
         }catch (error) {
