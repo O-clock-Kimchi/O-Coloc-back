@@ -39,13 +39,12 @@ Users.init({
         model: 'colocs',
         key: 'coloc_id'
         },
-        allowNull: true
     },
-    resetPasswordToken: {
+    reset_password_token: {
         type: DataTypes.STRING,
         allowNull: true
     },
-    resetPasswordExpires: {
+    reset_password_expires: {
         type: DataTypes.DATE,
         allowNull: true
     }
