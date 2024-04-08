@@ -30,7 +30,7 @@ exports.login = async (req, res) => {
         req.session.userId = user.user_id; 
         console.log("User ID in session:", req.session.userId);
 
-        res.status(200).json({ message: "Authentification réussie" });
+        res.status(200).json({ message: "Authentification réussie", user });
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: "Erreur de serveur" });
