@@ -25,11 +25,11 @@ exports.signup = async (req, res) => {
             return res.status(400).json({ message: "L'adresse e-mail est déjà enregistrée." });
         }
 
-          // Check if the color is already selected by another user
-          const colorExists = await Users.findOne({ where: { color } });
-          if (colorExists) {
-              return res.status(400).json({ message: "La couleur choisie est déjà sélectionnée par un autre utilisateur." });
-          }
+        // Check if the color is already selected by another user
+        const colorExists = await Users.findOne({ where: { color } });
+        if (colorExists) {
+            return res.status(400).json({ message: "La couleur choisie est déjà sélectionnée par un autre utilisateur." });
+        }
 
         // Hash password
         const hashedPassword = await bcrypt.hash(password, 10);
@@ -45,7 +45,6 @@ exports.signup = async (req, res) => {
         //Save user in session
         req.session.userId = newUser.user_id;
         console.log("User ID in session:", req.session.userId);
-
 
         res.status(201).json({ message: "Utilisateur créé avec succès" });
     } catch (error) {

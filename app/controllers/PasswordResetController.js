@@ -11,6 +11,8 @@
 const crypto = require('crypto');
 const nodemailer = require('nodemailer');
 const User = require('../models/Users');
+require('dotenv').config();
+const { Sequelize } = require('sequelize');
 
 // Configuration de nodemailer avec tes informations
 const transporter = nodemailer.createTransport({
@@ -58,7 +60,7 @@ async requestPasswordReset(req, res) {
 
     transporter.sendMail(mailOptions, (error) => {
         if (error) {
-            return res.status(500).json({ error: 'Erreur lors de l\'envoi de l\'email.' });
+            return res.status(500).json({ error: 'Erreur lors de l\'envoi de l\'email.', details: error.toString() });
         }
     res.status(200).json({ message: `Un email de réinitialisation a été envoyé à ${email}.` });
     });
@@ -66,14 +68,15 @@ async requestPasswordReset(req, res) {
 
   // Méthode pour valider le token de réinitialisation
 async resetPassword(req, res) {
-    const { token, userId, newPassword } = req.body;
-    const user = await User.findOne({
-    where: {
-        id: userId,
-        reset_password_token: token,
-        reset_password_expires: { [Sequelize.Op.gt]: Date.now() }
-    }
-    });
+    try {
+        const { token, userId, newPassword } = req.body;
+        const user = await User.findOne({
+        where: {
+            id: userId,
+            reset_password_token: token,
+            reset_password_expires: { [Sequelize.Op.gt]: Date.now() }
+        }
+        });
 
     if (!user) {
         return res.status(400).json({ error: 'Demande de réinitialisation invalide ou expirée.' });
@@ -89,17 +92,22 @@ async resetPassword(req, res) {
     });
 
     res.status(200).json({ message: 'Mot de passe réinitialisé avec succès.' });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: "Erreur de serveur" });
+    }
 },
 
   // Méthode pour mettre à jour le mot de passe
 async validateResetToken(req, res) {
+    try {
     const { token } = req.params;
     const user = await User.findOne({
     where: {
         reset_password_token: token,
         reset_password_expires: { [Sequelize.Op.gt]: Date.now() } // Vérifie si le token n'est pas expiré
-}
-});
+    }
+    });
 
     if (!user) {
         return res.status(400).json({ error: 'Oups! Ce jeton de réinitialisation semble avoir fait une pause-café trop longue ou s\'est perdu en chemin.' });
@@ -108,8 +116,11 @@ async validateResetToken(req, res) {
     // Le token est valide, procéder à la réinitialisation du mot de passe
     // Tu peux ici, par exemple, rediriger l'utilisateur vers une page de réinitialisation du mot de passe sur le frontend
     res.status(200).json({ message: 'Token valide. L\'utilisateur peut réinitialiser son mot de passe.', userId: user.id });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: "Erreur de serveur" });
+    }
+
 }
-
 };
-
 module.exports = PasswordResetController;
