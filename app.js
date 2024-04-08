@@ -6,7 +6,7 @@ const express = require('express');
 const session = require('express-session');
 const cors = require('cors');
 
-const allowedOrigins = ['htpp://localhost:5173/', 'htpp://localhost:5174/'];
+const allowedOrigins = ['http://localhost:5173', 'http://localhost:5174'];
 
 const app = express();
 const router = require('./app/router.js');
@@ -38,7 +38,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(session({
     secret: process.env.SESSION_SECRET,
     resave: false,
-    saveUninitialized: true
+    saveUninitialized: true,
+    cookie: {
+        maxAge: 1000 * 60 * 60, // 1H
+    },
 }));
 
 app.use(router);
