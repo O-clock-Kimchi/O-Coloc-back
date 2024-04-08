@@ -3,11 +3,11 @@ POST http://172.25.192.189:5000/tasks
 Content-Type: application/json
 
 {
-    "description": "Passer l'aspirateur",
+    "description": "Faire la poussière",
     "is_predefined": false,
     "is_done": false,
-    "frequency": 7,
-    "user_id": 3
+    "frequency": 14,
+    "user_id": 2
 }
 
 ### Get All Tasks
@@ -16,47 +16,47 @@ Content-Type: application/json
 
 
 ### Update Task
-PUT http://172.25.192.189:5000/tasks/6
+PUT http://172.25.192.189:5000/tasks/8
 Content-Type: application/json
 
 {
-    "description": "Acheter des vivres et des boissons",
+    "description": "Aspiro",
     "is_predefined": false,
     "is_done": true,
     "frequency": 7,
-    "user_id": 1
+    "user_id": 3
 }
 
 
 ### Delete Task
-DELETE http://172.25.192.189:5000/tasks/7
+DELETE http://172.25.192.189:5000/tasks/8
 Content-Type: application/json
 
 
 # ------------ RESET PASSWORD -------------------
 
 ### Demande de réinitialisation du mot de passe
-POST http://172.25.192.189:5000/password-reset/request-reset
+POST http://172.25.192.189:5000/request-reset
 Content-Type: application/json
 
 {
-    "email": "auaude@gmail.com"
+    "email": "mickael.4870@gmail.com"
 }
 
 ### Valider le token de réinitialisation du mot de passe
 ### Remplace :token par le token réel reçu par email
-GET http://172.25.192.189:5000/password-reset/validate-reset-token/:token
+GET http://172.25.192.189:5000/validate-reset-token/cd91a5cd0396ceb5b16cb5dae800531ad619aba3
 
 ###
 
 ### Réinitialiser le mot de passe
 ### Assure-toi de remplacer :userId par l'identifiant de l'utilisateur
 ### et :token par le token réel
-POST http://172.25.192.189:5000/password-reset/reset-password
+POST http://172.25.192.189:5000/reset-password
 Content-Type: application/json
 
 {
-    "userId": 1,
-    "token": "leTokenRéelIci",
+    "userId": 7,
+    "token": "cd91a5cd0396ceb5b16cb5dae800531ad619aba3",
     "newPassword": "nouveauMotDePasse"
 }

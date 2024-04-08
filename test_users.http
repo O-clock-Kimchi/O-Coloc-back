@@ -3,8 +3,8 @@ POST http://172.25.192.189:5000/signup
 Content-Type: application/json
 
 {
-    "firstname":"Nono",
-    "email":"nono@gmail.com",
+    "firstname":"Mickael",
+    "email":"mickael.4870@gmail.com",
     "password":"Nonoellie321",
     "color": "#343434"
     
@@ -21,13 +21,13 @@ Content-Type: application/json
 
 ###creer route UPDATE en put/update
 
-PUT http://172.25.192.189:5000/user/5/profile
+PUT http://172.25.192.189:5000/user/6/profile
 Content-Type: application/json
 
 {
     "firstname": "NoellieTheBest",
     "email": "",
-    "color": "",
+    "color": "#TR0158",
     "password": ""
 }
 
@@ -35,3 +35,9 @@ Content-Type: application/json
 DELETE http://172.25.192.189:5000/user/5/delete
 Cookie: connect.sid=s%3AtSL0v_3J-Ibu5uzqhhF8x3uEbDQZDQR-.u7rhilKQmFxy6AcUeUYlo%2FUb97FoPNuL%2FGJayn9YcS8; Path=/; HttpOnly
 Content-Type: application/json
+
+###creer route GET consultation Profil par le user
+DELETE http://172.25.192.189:5000/user/5/profile
+Cookie: connect.sid=s%3AtSL0v_3J-Ibu5uzqhhF8x3uEbDQZDQR-.u7rhilKQmFxy6AcUeUYlo%2FUb97FoPNuL%2FGJayn9YcS8; Path=/; HttpOnly
+Content-Type: application/json
+
