@@ -1,8 +1,12 @@
+/* eslint-disable func-names */
+/* eslint-disable object-shorthand */
 /* eslint-disable comma-dangle */
 /* eslint-disable linebreak-style */
 const express = require('express');
 const session = require('express-session');
 const cors = require('cors');
+
+const allowedOrigins = ['htpp://localhost:5173/', 'htpp://localhost:5174/'];
 
 const app = express();
 const router = require('./app/router.js');
@@ -11,9 +15,17 @@ require('dotenv').config();
 
 // Configuration de CORS
 app.use(cors({
-    origin: '*',
+    origin: function (origin, callback) {
+        if (!origin) return callback(null, true);
+        if (allowedOrigins.indexOf(origin) === -1) {
+            const msg = 'L\'origine de cette requête n\'est pas autorisée.';
+            return callback(new Error(msg), false);
+        }
+        return callback(null, true);
+    },
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'], // Méthodes HTTP autorisées
     allowedHeaders: ['Content-Type', 'Authorization'], // En-têtes autorisés
+    credentials: true, // Autorise l'envoi des cookies
 }));
 
 // Middleware pour parser le body des requêtes en JSON
