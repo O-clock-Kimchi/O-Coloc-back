@@ -16,10 +16,12 @@ const app = express();
 // }));
 
 // Importer les contrôleurs
-const { signup } = require('../controllers/user_signup_controller');
-const { login } = require('../controllers/user_login_controller');
-const { updateProfile } = require('../controllers/user_update_controller');
-const { deleteProfile } = require('../controllers/user_delete_controller');
+const { signup } = require('../controllers/usersSignupController');
+const { login } = require('../controllers/usersLoginController');
+const { updateProfile } = require('../controllers/usersUpdateController');
+const { deleteProfile } = require('../controllers/usersDeleteController');
+const { getProfile } = require('../controllers/usersGetProfile');
+
 
 // Route pour l'inscription d'un nouvel utilisateur
 usersRouter.post('/signup', signup);
@@ -32,6 +34,10 @@ usersRouter.put('/user/:userId/profile', updateProfile);
 
 //Route pour la suppression d'un compte utilisateur (utilisateur connecté)
 usersRouter.delete('/user/:userId/delete', deleteProfile);
+
+//Route pour la consultation de la page profil par l'utilisateur
+usersRouter.delete('/user/:userId/profile', getProfile);
+
 
 // module.exports = usersRouter;
 module.exports = usersRouter;
