@@ -1,3 +1,6 @@
+/* eslint-disable padded-blocks */
+/* eslint-disable no-else-return */
+/* eslint-disable no-console */
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable max-len */
 /* eslint-disable no-trailing-spaces */
@@ -13,13 +16,17 @@ const nodemailer = require('nodemailer');
 const User = require('../models/Users');
 require('dotenv').config();
 const { Sequelize } = require('sequelize');
+const bcrypt = require('bcrypt');
 
 // Configuration de nodemailer avec tes informations
 const transporter = nodemailer.createTransport({
-    service: 'gmail', // Utilise ton service d'email
+    service: 'gmail',
     auth: {
-    user: process.env.EMAIL_USERNAME, // Ton adresse email
-    pass: process.env.EMAIL_PASSWORD // Ton mot de passe email ou jeton d'authentification
+        type: 'OAuth2',
+      user: process.env.EMAIL_USERNAME, // L'adresse email utilisée pour envoyer les emails
+        clientId: process.env.OAUTH_CLIENTID,
+        clientSecret: process.env.OAUTH_CLIENT_SECRET,
+        refreshToken: process.env.OAUTH_REFRESH_TOKEN,
     }
 });
 
@@ -58,11 +65,14 @@ async requestPasswordReset(req, res) {
             `Si tu te demandes ce qui se passe ici et que tu n'as rien demandé, ne t'inquiète pas, c'est peut-être juste un fantôme geek qui s'amuse. Ignore simplement cet email et tout ira bien! 👻\n`
     };
 
-    transporter.sendMail(mailOptions, (error) => {
+    transporter.sendMail(mailOptions, (error, info) => {
         if (error) {
+            console.error('Erreur lors de l\'envoi de l\'email:', error);
             return res.status(500).json({ error: 'Erreur lors de l\'envoi de l\'email.', details: error.toString() });
+        } else {
+            console.log('Email envoyé:', info.response);
+            return res.status(200).json({ message: `Un email de réinitialisation a été envoyé à ${email}.` });
         }
-    res.status(200).json({ message: `Un email de réinitialisation a été envoyé à ${email}.` });
     });
 },
 
@@ -72,7 +82,7 @@ async resetPassword(req, res) {
         const { token, userId, newPassword } = req.body;
         const user = await User.findOne({
         where: {
-            id: userId,
+            user_id: userId,
             reset_password_token: token,
             reset_password_expires: { [Sequelize.Op.gt]: Date.now() }
         }

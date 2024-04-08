@@ -45,7 +45,7 @@ Content-Type: application/json
 
 ### Valider le token de réinitialisation du mot de passe
 ### Remplace :token par le token réel reçu par email
-GET http://172.25.192.189:5000/validate-reset-token/cd91a5cd0396ceb5b16cb5dae800531ad619aba3
+GET http://172.25.192.189:5000/validate-reset-token/ad4184959f0ad698d260b5e077948a1f0507046b
 
 ###
 
@@ -57,6 +57,6 @@ Content-Type: application/json
 
 {
     "userId": 7,
-    "token": "cd91a5cd0396ceb5b16cb5dae800531ad619aba3",
+    "token": "ad4184959f0ad698d260b5e077948a1f0507046b",
     "newPassword": "nouveauMotDePasse"
 }
