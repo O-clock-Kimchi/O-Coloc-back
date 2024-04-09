@@ -8,10 +8,12 @@ exports.signup = async (req, res) => {
         const { firstname, email, password, color } = req.body;
 
         // Check if the password meets the required format
-        const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/;
+
+        const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*])[0-9a-zA-Z!@#$%^&*]{8,}$/;
         if (!passwordRegex.test(password)) {
-            return res.status(400).json({ message: "Le mot de passe doit contenir au moins 8 caractères, une lettre majuscule, une lettre minuscule et un chiffre." });
+            return res.status(400).json({ message: "Le mot de passe doit contenir au moins 8 caractères, une lettre majuscule, une lettre minuscule, un chiffre et un caractère spécial parmi !@#$%^&*." });
         }
+
 
         // Check if the email format is valid
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -25,11 +27,6 @@ exports.signup = async (req, res) => {
             return res.status(400).json({ message: "L'adresse e-mail est déjà enregistrée." });
         }
 
-        // Check if the color is already selected by another user
-        const colorExists = await Users.findOne({ where: { color } });
-        if (colorExists) {
-            return res.status(400).json({ message: "La couleur choisie est déjà sélectionnée par un autre utilisateur." });
-        }
 
         // Hash password
         const hashedPassword = await bcrypt.hash(password, 10);
