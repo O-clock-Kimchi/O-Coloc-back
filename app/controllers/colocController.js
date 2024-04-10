@@ -16,22 +16,37 @@ const Colocs = require('../models/Colocs');
 const Users = require('../models/Users');
 const { isValidName, isValidNameRegex, generateCodeOnUserLeave } = require('../utils/fonctions.js');
 
-const bcrypt = require('bcrypt');
-
 const colocController = {
     
     // Reclaim our coloc
     async show(req, res) {
         try {
-            const id = req.params.id;
-            const coloc = await Colocs.findByPk(id);
             if (!req.session.userId) {
                 return res.status(401).json({ message: "Non autorisé. Veuillez vous connecter pour recupérer votre coloc." });
             }
-            if (coloc) {
+            const user = await Users.findOne({where:{user_id:req.session.userId}});
+            
+            if (!user) {
+                return res.status(404).json({ message: "Utilisateur non trouvé." });
+            }
+
+            const id = req.params.id;
+           
+            const coloc = await Colocs.findByPk(id);
+            
+
+            if (!coloc) {
+                return res.status(404).json({ message: "Colocation non trouvée." });
+            }
+
+            const colocId = user.current_coloc_id;
+            console.log('Identifiant de la colocation:', coloc.coloc_id);
+            console.log('Identifiant de la colocation associée à l\'utilisateur:', colocId);
+
+            if (coloc.coloc_id === colocId) {
                 res.json(coloc);
             } else {
-                res.status(404).json({ message: 'Colocation non trouvée' });
+                res.status(404).json({ message: 'Cette colocation existe peut-être mais ce n\'est pas la tienne !' });
             }
         } catch (error) {
             console.error('Erreur lors de la récupération de la colocation :', error);
@@ -84,7 +99,7 @@ const colocController = {
     // Create new coloc
     async create(req, res) {
         try {
-            const { name, user_id } = req.body;
+            const { name } = req.body;
             if (!req.session.userId) {
                 return res.status(401).json({ message: "Non autorisé. Veuillez vous connecter pour créer une coloc." });
             }

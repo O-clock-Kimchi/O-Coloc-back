@@ -2,7 +2,7 @@ const colocsRouter = require('express').Router();
 const colocController = require('../controllers/colocController');
 
 colocsRouter.post('/user/:userId/colocs/create', colocController.create);
-colocsRouter.get('/user/:userId/colocs/:id', colocController.show);
+colocsRouter.get('/colocs/:id', colocController.show);
 colocsRouter.patch('/colocs/:id', colocController.update);
 colocsRouter.delete('/colocs/:id', colocController.destroy);
 
