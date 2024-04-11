@@ -16,7 +16,6 @@ const Colocs = require('../models/Colocs');
 const Users = require('../models/Users');
 const { isValidName, isValidNameRegex, generateCodeOnUserLeave } = require('../utils/fonctions.js');
 
-const bcrypt = require('bcrypt');
 
 const colocController = {
     

@@ -36,7 +36,7 @@ usersRouter.put('/user/:userId/profile', updateProfile);
 usersRouter.delete('/user/:userId/delete', deleteProfile);
 
 //Route pour la consultation de la page profil par l'utilisateur
-usersRouter.delete('/user/:userId/profile', getProfile);
+usersRouter.get('/user/:userId/profile', getProfile);
 
 
 // module.exports = usersRouter;
