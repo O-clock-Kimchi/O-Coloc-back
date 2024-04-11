@@ -1,5 +1,5 @@
 ###creer route SIGNUP en post
-POST http://localhost:5000/signup
+POST http://172.25.192.189:5000/signup
 Content-Type: application/json
 
 {
@@ -15,8 +15,8 @@ POST http://172.25.192.189:5000/login
 Content-Type: application/json
 
 {
-    "email":"nono@gmail.com",
-    "password":"Nonoellie321"  
+    "email":"mickey.4870@gmail.com",
+    "password":"Mickey44000!"  
 }
 
 ###creer route UPDATE en put/update

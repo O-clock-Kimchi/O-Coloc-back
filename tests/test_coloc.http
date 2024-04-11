@@ -1,16 +1,16 @@
 ###creer coloc en post
-POST http://172.25.192.189:5000/user/3/colocs/create
-Cookie:connect.sid=s%3A6NchkhTx-yB_tlSZM_wZet_v4Xtm6fuC.1W5KPMcocmGNHeVNSAuJXMq4UPwC2IluazKEmztERJ4; Path=/; HttpOnly
+POST http://172.25.192.189:5000/colocs/create
+Cookie: connect.sid=s%3AcpmPd6xwTa9KsWF9xQL_03P-3KKZRutQ.W2H%2F0FephigpKrdt0zqLeeQu%2FEq%2Fsr8P75khDs4NUvU; Path=/; Expires=Wed, 10 Apr 2024 14:15:56 GMT; HttpOnly
 Content-Type: application/json
 
 {
     
-    "name": "test cookie"
+    "name": "La coloc"
 }
 
 ###recuperer une coloc
-GET http://172.25.192.189:5000/user/5/colocs/2
-Cookie: connect.sid=s%3A6NchkhTx-yB_tlSZM_wZet_v4Xtm6fuC.1W5KPMcocmGNHeVNSAuJXMq4UPwC2IluazKEmztERJ4; Path=/; HttpOnly
+GET http://172.25.192.189:5000/colocs/4
+Cookie: connect.sid=s%3ANsQulWeTRwcTHL2y1Ru0u-I85svLDIXI.QMQGCxJKL3QB4wcDG0anTk1bxOGBoyuFhGmIpy1y62w; Path=/; Expires=Wed, 10 Apr 2024 14:02:03 GMT; HttpOnly
 Content-Type: application/json
 
 ###mettre a jour coloc

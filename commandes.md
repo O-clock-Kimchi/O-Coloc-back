@@ -27,3 +27,6 @@ npm install nodemailer
 
 <!-- Pour configurer les CORS sur le serveur backend et autoriser les requêtes coté frontend -->
 npm install cors
+
+<!-- Dépendance pour gérer l'authentification par le compte Google -->
+npm install passport passport-google-oauth20

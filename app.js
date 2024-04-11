@@ -3,7 +3,9 @@
 /* eslint-disable comma-dangle */
 /* eslint-disable linebreak-style */
 const express = require('express');
+const passport = require('passport');
 const session = require('express-session');
+require('./config/passport-setup'); // Configuration de Passport
 const cors = require('cors');
 
 const allowedOrigins = ['http://localhost:5173', 'http://localhost:5174'];
@@ -40,9 +42,15 @@ app.use(session({
     resave: false,
     saveUninitialized: true,
     cookie: {
-        maxAge: 1000 * 60 * 60, // 1H
+        secure: false,
+        httpOnly: true,
+        maxAge: 1000 * 60, // 1min
     },
 }));
+
+// Initialisation de Passport
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use(router);
 

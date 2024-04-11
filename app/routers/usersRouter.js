@@ -22,7 +22,6 @@ const { updateProfile } = require('../controllers/usersUpdateController');
 const { deleteProfile } = require('../controllers/usersDeleteController');
 const { getProfile } = require('../controllers/usersGetProfile');
 
-
 // Route pour l'inscription d'un nouvel utilisateur
 usersRouter.post('/signup', signup);
 
@@ -37,7 +36,10 @@ usersRouter.delete('/user/:userId/delete', deleteProfile);
 
 //Route pour la consultation de la page profil par l'utilisateur
 usersRouter.get('/user/:userId/profile', getProfile);
+<<<<<<< HEAD
 
+=======
+>>>>>>> d052a84c4857285cbd04167904894d366511a6e2
 
 // module.exports = usersRouter;
 module.exports = usersRouter;
