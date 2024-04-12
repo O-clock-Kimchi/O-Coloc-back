@@ -1,22 +1,22 @@
 ###creer route SIGNUP en post
-POST http://localhost:3000/signup
+POST http://localhost:5000/signup
 Content-Type: application/json
 
 {
-    "firstname":"Mickey",
-    "email":"mickey.4870@gmail.com",
-    "password":"Mickey44000!",
+    "firstname":"test1",
+    "email":"test1.4870@gmail.com",
+    "password":"Test144000!",
     "color": "#343434"
     
 }
 
 ###creer route LOGIN en post
-POST http://172.25.192.189:5000/login
+POST http://localhost:5000/login
 Content-Type: application/json
 
 {
-    "email":"mickey.4870@gmail.com",
-    "password":"Mickey44000!"  
+    "email":"test1.4870@gmail.com",
+    "password":"Test144000!"  
 }
 
 ###creer route UPDATE en put/update
@@ -41,3 +41,19 @@ DELETE http://172.25.192.189:5000/user/5/profile
 Cookie: connect.sid=s%3AtSL0v_3J-Ibu5uzqhhF8x3uEbDQZDQR-.u7rhilKQmFxy6AcUeUYlo%2FUb97FoPNuL%2FGJayn9YcS8; Path=/; HttpOnly
 Content-Type: application/json
 
+###Route pour recuperer tous les users d'une coloc
+GET http://localhost:5000/colocs/10/users
+Cookie: connect.sid=s%3ASw7xucIT0gNNLBMjBpeeq08rQAm4PLcP.LLLHLz%2FB436%2BDH4YjJQgcmcRak1rFmRpD4FlV5Xm%2BQ4; Path=/; Expires=Fri, 12 Apr 2024 09:18:30 GMT; HttpOnly
+Content-Type: application/json
+
+###Route pour recuperer tous les tasks d'une coloc
+GET http://localhost:5000/colocs/10/tasks
+Cookie: connect.sid=s%3AjV4biKrsMhVCn4H5xfd8P-_Dpu1cZTqB.Zj9V6JWlF%2B5AAHJQ%2Fy5UdG3zxCrxS%2FOxuBI%2BXF8Gw0g; Path=/; Expires=Fri, 12 Apr 2024 11:40:12 GMT; HttpOnly
+Content-Type: application/json
+
+
+### route pour deconnexion user
+
+POST http://localhost:5000/user/4/logout
+Cookie: connect.sid=s%3AggT6DRIdgl71hDwqMtekdmXYTbiVL__1.n31JUkTOhwFATLpLWFEVo7NVEP7HLoUYmI5njQvqZ0c; Path=/; Expires=Fri, 12 Apr 2024 09:59:07 GMT; HttpOnly
+Content-Type: application/json

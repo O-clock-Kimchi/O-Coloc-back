@@ -1,9 +1,9 @@
 ###Créer une nouvelle tâche
-POST http://172.25.192.189:5000/tasks
+POST http://localhost:5000/tasks
 Content-Type: application/json
 
 {
-    "description": "Faire la poussière",
+    "description": "Faire les courses",
     "is_predefined": false,
     "is_done": false,
     "frequency": 14,
@@ -11,7 +11,7 @@ Content-Type: application/json
 }
 
 ### Get All Tasks
-GET http://172.25.192.189:5000/tasks
+GET http://localhost:5000/tasks
 Content-Type: application/json
 
 

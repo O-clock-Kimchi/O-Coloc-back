@@ -1,16 +1,16 @@
 ###creer coloc en post
-POST http://172.25.192.189:5000/colocs/create
-Cookie: connect.sid=s%3AcpmPd6xwTa9KsWF9xQL_03P-3KKZRutQ.W2H%2F0FephigpKrdt0zqLeeQu%2FEq%2Fsr8P75khDs4NUvU; Path=/; Expires=Wed, 10 Apr 2024 14:15:56 GMT; HttpOnly
+POST http://localhost:3000/colocs/create
+Cookie: connect.sid=s%3AzVqAFsODVCFnie5vdT-UXCzRLaSEMRaS.HO1%2BSU3B5%2BOTEbz1N6qdk44VKRqq18BvOq8qD9K7ALQ; Path=/; Expires=Thu, 11 Apr 2024 11:55:47 GMT; HttpOnly
 Content-Type: application/json
 
 {
     
-    "name": "La coloc"
+    "name": "La colocation"
 }
 
 ###recuperer une coloc
-GET http://172.25.192.189:5000/colocs/4
-Cookie: connect.sid=s%3ANsQulWeTRwcTHL2y1Ru0u-I85svLDIXI.QMQGCxJKL3QB4wcDG0anTk1bxOGBoyuFhGmIpy1y62w; Path=/; Expires=Wed, 10 Apr 2024 14:02:03 GMT; HttpOnly
+GET http://localhost:5000/colocs/10
+Cookie: connect.sid=s%3APxrnzcxQxyWs3ONdpQoPnCpKtQB7MvnC.oUQfxTHsWMyEqJjjgHNTODIHZ35eRugRgiNQLSnfXbc; Path=/; Expires=Fri, 12 Apr 2024 09:12:36 GMT; HttpOnly
 Content-Type: application/json
 
 ###mettre a jour coloc
@@ -26,15 +26,15 @@ DELETE http://localhost:5000/colocs/9
 Content-Type: application/json
 
 ###rejoindre une coloc en post
-POST http://172.25.192.189:5000/user/5/colocs/join
-Cookie:connect.sid=s%3A6NchkhTx-yB_tlSZM_wZet_v4Xtm6fuC.1W5KPMcocmGNHeVNSAuJXMq4UPwC2IluazKEmztERJ4; Path=/; HttpOnly
+POST http://localhost:5000/colocs/join
+Cookie:connect.sid=s%3Aixt27oc-vSzgmQuBmcC0JY7IR0NcqbxL.IkllbIPHk%2FzBhdgmLO0qyfA4Vs5yoA85oUX%2FF3ZMxV8; Path=/; Expires=Fri, 12 Apr 2024 11:38:04 GMT; HttpOnly
 Content-Type: application/json
 
 {
-    "groupe_code_valid":"23049609"
+    "groupe_code_valid":"74275992"
 }
 
 ###quitter une coloc en post
-POST http://172.25.192.189:5000/colocs/5/leave
-Cookie:connect.sid=s%3A6NchkhTx-yB_tlSZM_wZet_v4Xtm6fuC.1W5KPMcocmGNHeVNSAuJXMq4UPwC2IluazKEmztERJ4; Path=/; HttpOnly
+POST http://localhost:5000/colocs/10/leave
+Cookie:connect.sid=s%3ASw7xucIT0gNNLBMjBpeeq08rQAm4PLcP.LLLHLz%2FB436%2BDH4YjJQgcmcRak1rFmRpD4FlV5Xm%2BQ4; Path=/; Expires=Fri, 12 Apr 2024 09:18:30 GMT; HttpOnly
 Content-Type: application/json
