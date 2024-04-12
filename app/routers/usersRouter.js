@@ -21,6 +21,7 @@ const { login } = require('../controllers/usersLoginController');
 const { updateProfile } = require('../controllers/usersUpdateController');
 const { deleteProfile } = require('../controllers/usersDeleteController');
 const { getProfile } = require('../controllers/usersGetProfile');
+const {getAllUserOfColocController} = require('../controllers/getAllUserOfColocController');
 
 // Route pour l'inscription d'un nouvel utilisateur
 usersRouter.post('/signup', signup);
@@ -36,6 +37,9 @@ usersRouter.delete('/user/:userId/delete', deleteProfile);
 
 //Route pour la consultation de la page profil par l'utilisateur
 usersRouter.get('/user/:userId/profile', getProfile);
+
+// Route pour recupérer une coloc et tous ses users
+usersRouter.get('/colocs/:id/users', getAllUserOfColocController);
 
 // module.exports = usersRouter;
 module.exports = usersRouter;
