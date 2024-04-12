@@ -6,7 +6,7 @@ const express = require('express');
 
 const app = express();
 
-const { usersRouter, tasksRouter, colocsRouter, passwordResetRouter, authGoogleRouter } = require('./routers');
+const { usersRouter, tasksRouter, colocsRouter, passwordResetRouter, authGoogleRouter, userColocTaskRouter } = require('./routers');
 
 const router = require('express').Router();
 
@@ -20,5 +20,6 @@ router.use(colocsRouter);
 router.use(tasksRouter);
 router.use(passwordResetRouter);
 router.use(authGoogleRouter);
+router.use(userColocTaskRouter);
 
 module.exports = router;
