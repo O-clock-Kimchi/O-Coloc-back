@@ -187,6 +187,20 @@ const colocController = {
             return res.status(500).json({ message: "Erreur lors de la gestion du départ de l'utilisateur de la colocation." });
         }
 
+    },
+    async generateNewCode (req,res){
+        try{
+            const coloc = await Colocs.findByPk(colocId);
+            if (coloc) {
+                const code = Math.floor(10000000 + Math.random() * 90000000).toString().substring(0, 8);
+                await coloc.update({ lien_coloc: code, groupe_code_valid: code });
+                console.log('Code généré avec succès pour la colocation :', colocId);
+            } else {
+                console.error('Colocation non trouvée lors de la génération du code pour la colocation :', colocId);
+            }
+        } catch (error) {
+            console.error('Erreur lors de la génération du code pour la colocation :', error);
+        }
     }
 
 };
