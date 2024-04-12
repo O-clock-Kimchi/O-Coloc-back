@@ -111,6 +111,11 @@ const colocController = {
             }
             const code = Math.floor(10000000 + Math.random() * 90000000).toString().substring(0, 8);
 
+            const user = await Users.findByPk(req.session.userId);
+            if (user.current_coloc_id){
+                return res.status(400).json({ message: "Vous êtes déjà membre d'une coloc!" });
+            }
+
             const newColoc = await Colocs.create({ name, user_id: req.session.userId, lien_coloc: code, groupe_code_valid:code});
             res.status(201).json(newColoc);
 
@@ -130,6 +135,10 @@ const colocController = {
             
             if (!req.session.userId) {
                 return res.status(401).json({ message: "Non autorisé. Veuillez vous connecter pour rejoindre une coloc." });
+            }
+            const user = await Users.findByPk(req.session.userId);
+            if (user.current_coloc_id){
+                return res.status(400).json({ message: "Vous êtes déjà membre d'une coloc!" });
             }
             if (coloc) {
                 if (coloc.groupe_code_valid === groupe_code_valid) {
