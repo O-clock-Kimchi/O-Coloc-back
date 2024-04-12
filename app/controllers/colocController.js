@@ -190,7 +190,8 @@ const colocController = {
     },
     async generateNewCode (req,res){
         try{
-            const coloc = await Colocs.findByPk(colocId);
+            const id = req.params.id
+            const coloc = await Colocs.findByPk(id);
             if (coloc) {
                 const code = Math.floor(10000000 + Math.random() * 90000000).toString().substring(0, 8);
                 await coloc.update({ lien_coloc: code, groupe_code_valid: code });
