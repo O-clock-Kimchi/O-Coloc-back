@@ -10,11 +10,13 @@ const usersRouter = require('./usersRouter');
 const tasksRouter = require('./tasksRouter');
 const passwordResetRouter = require('./passwordResetRouter');
 const authGoogleRouter = require('./authGoogleRouter');
+const userColocTaskRouter = require('./userColocTaskRouter');
 
 module.exports = {
   usersRouter,
   tasksRouter,
   colocsRouter,
   passwordResetRouter,
-  authGoogleRouter
+  authGoogleRouter,
+  userColocTaskRouter
 };
