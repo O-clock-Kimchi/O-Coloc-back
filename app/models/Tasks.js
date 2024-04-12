@@ -23,7 +23,7 @@ Task.init({
     },
     is_predefined: {
         type: DataTypes.BOOLEAN,
-        allowNull: false
+        allowNull: true
     },
     is_done: {
         type: DataTypes.BOOLEAN,
