@@ -3,9 +3,9 @@ POST http://localhost:5000/signup
 Content-Type: application/json
 
 {
-    "firstname":"test1",
-    "email":"test1.4870@gmail.com",
-    "password":"Test144000!",
+    "firstname":"test",
+    "email":"test.4870@gmail.com",
+    "password":"Test44000!",
     "color": "#343434"
     
 }
@@ -15,8 +15,8 @@ POST http://localhost:5000/login
 Content-Type: application/json
 
 {
-    "email":"test1.4870@gmail.com",
-    "password":"Test144000!"  
+    "email":"test.4870@gmail.com",
+    "password":"Test44000!"  
 }
 
 ###creer route UPDATE en put/update
@@ -48,7 +48,7 @@ Content-Type: application/json
 
 ###Route pour recuperer tous les tasks d'une coloc
 GET http://localhost:5000/colocs/10/tasks
-Cookie: connect.sid=s%3AjV4biKrsMhVCn4H5xfd8P-_Dpu1cZTqB.Zj9V6JWlF%2B5AAHJQ%2Fy5UdG3zxCrxS%2FOxuBI%2BXF8Gw0g; Path=/; Expires=Fri, 12 Apr 2024 11:40:12 GMT; HttpOnly
+Cookie: connect.sid=s%3AwsnWjf0aYbMckQBd9JL8Xk3uHW8he5TY.8B%2Brq1aZHfEMn1Bv4MfMiCX%2BNy3Kj2pVHUaIc3pnCtI; Path=/; Expires=Fri, 12 Apr 2024 12:02:18 GMT; HttpOnly
 Content-Type: application/json
 
 

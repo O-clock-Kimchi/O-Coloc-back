@@ -1,13 +1,13 @@
 ###Créer une nouvelle tâche
 POST http://localhost:5000/tasks
+Cookie: connect.sid=s%3ArQ00a7aPKIRhWg5o7xDQzxaDJxdDJ_VB.cLij2ikPFdTEK3iDd%2BwEdy0XZkLoOtTPrsx9S5isOAg; Path=/; Expires=Fri, 12 Apr 2024 12:13:59 GMT; HttpOnly
 Content-Type: application/json
 
 {
     "description": "Faire les courses",
     "is_predefined": false,
     "is_done": false,
-    "frequency": 14,
-    "user_id": 2
+    "frequency": 14
 }
 
 ### Get All Tasks
@@ -16,20 +16,21 @@ Content-Type: application/json
 
 
 ### Update Task
-PUT http://172.25.192.189:5000/tasks/8
+PUT http://localhost:5000/tasks/3
+Cookie: connect.sid=s%3ASUeTCoxS7n3-ahldlmXHGTDbYjwogl-B.dK5YHuWM3P8KZU%2FaABP%2Bb6IcSjVhWKWGZqsmXT56x5s; Path=/; Expires=Fri, 12 Apr 2024 12:33:47 GMT; HttpOnly
 Content-Type: application/json
 
 {
     "description": "Aspiro",
     "is_predefined": false,
     "is_done": true,
-    "frequency": 7,
-    "user_id": 3
+    "frequency": 7
 }
 
 
 ### Delete Task
-DELETE http://172.25.192.189:5000/tasks/8
+DELETE http://localhost:5000/tasks/4
+Cookie: connect.sid=s%3AENBmV_GtRN_u1wkI5dBQ4wAUEyi2__fJ.YX3%2Fqq%2F3nLLPxD7eIalziZ1AOw558BeaEzltxx62M9Q; Path=/; Expires=Fri, 12 Apr 2024 12:43:25 GMT; HttpOnly
 Content-Type: application/json
 
 
