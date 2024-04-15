@@ -5,7 +5,7 @@ const bcrypt = require('bcrypt');
 exports.updateProfile = async (req, res) => {
     try {
         // Vérifier si l'utilisateur est authentifié
-        if (!req.session.userId) {
+        if (!req.userId) {
             return res.status(401).json({ message: "Non autorisé. Veuillez vous connecter pour mettre à jour votre profil." });
         }
 

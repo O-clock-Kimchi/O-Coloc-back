@@ -1,4 +1,4 @@
-/* eslint-disable max-len */
+/* eslint-disable import/newline-after-import */
 /* eslint-disable linebreak-style */
 const express = require('express');
 const passwordResetRouter = express.Router();

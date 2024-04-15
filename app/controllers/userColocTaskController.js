@@ -6,7 +6,7 @@ const userColocTaskController={
     // recupération de tous les users dune coloc
     async getAllUserOfColocController(req, res){
         try{
-            if (!req.session.userId) {
+            if (!req.userId) {
                 return res.status(401).json({ message: "Utilisateur non connecté" });
             }
             const id = req.params.id;
@@ -38,7 +38,7 @@ const userColocTaskController={
     // recupération les tasks d'une coloc
     async getAllTasksOfColocController(req, res) {
         try {
-            if (!req.session.userId) {
+            if (!req.userId) {
                 return res.status(401).json({ message: "Utilisateur non connecté" });
             }
             const id = req.params.id;

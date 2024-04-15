@@ -1,6 +1,7 @@
 ###creer route SIGNUP en post
-POST http://localhost:5000/signup
+POST http://172.25.192.189:5000/signup
 Content-Type: application/json
+
 
 {
     "firstname":"test",
@@ -11,8 +12,9 @@ Content-Type: application/json
 }
 
 ###creer route LOGIN en post
-POST http://localhost:5000/login
+POST http://172.25.192.189:5000/login
 Content-Type: application/json
+
 
 {
     "email":"test.4870@gmail.com",
@@ -21,39 +23,35 @@ Content-Type: application/json
 
 ###creer route UPDATE en put/update
 
-PUT http://172.25.192.189:5000/user/6/profile
+PUT http://172.25.192.189:5000/user/10/profile
 Content-Type: application/json
+Authorization : token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxMCwiaWF0IjoxNzEzMTkxMDAzLCJleHAiOjE3MTMxOTQ2MDN9.g-k_WnSKkuY0iaHHxeEXmw1zHRct9uoQ4rMwXCKt5_o
 
 {
-    "firstname": "NoellieTheBest",
+    "firstname": "TestUpDate",
     "email": "",
-    "color": "#TR0158",
+    "color": "",
     "password": ""
 }
 
 ###creer route DELETE en delete
 DELETE http://172.25.192.189:5000/user/5/delete
-Cookie: connect.sid=s%3AtSL0v_3J-Ibu5uzqhhF8x3uEbDQZDQR-.u7rhilKQmFxy6AcUeUYlo%2FUb97FoPNuL%2FGJayn9YcS8; Path=/; HttpOnly
-Content-Type: application/json
+Authorization : token xxx
 
 ###creer route GET consultation Profil par le user
-DELETE http://172.25.192.189:5000/user/5/profile
-Cookie: connect.sid=s%3AtSL0v_3J-Ibu5uzqhhF8x3uEbDQZDQR-.u7rhilKQmFxy6AcUeUYlo%2FUb97FoPNuL%2FGJayn9YcS8; Path=/; HttpOnly
-Content-Type: application/json
+GET http://172.25.192.189:5000/profile
+Authorization : token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxMCwiaWF0IjoxNzEzMTkyMDI3LCJleHAiOjE3MTMxOTU2Mjd9.mmVudHM9TI6BE-cTimpVBD8pw_Dfx4geuhkBcGE23XA
 
 ###Route pour recuperer tous les users d'une coloc
 GET http://localhost:5000/colocs/10/users
-Cookie: connect.sid=s%3ASw7xucIT0gNNLBMjBpeeq08rQAm4PLcP.LLLHLz%2FB436%2BDH4YjJQgcmcRak1rFmRpD4FlV5Xm%2BQ4; Path=/; Expires=Fri, 12 Apr 2024 09:18:30 GMT; HttpOnly
-Content-Type: application/json
+Authorization : token xxx
 
 ###Route pour recuperer tous les tasks d'une coloc
 GET http://localhost:5000/colocs/10/tasks
-Cookie: connect.sid=s%3AwsnWjf0aYbMckQBd9JL8Xk3uHW8he5TY.8B%2Brq1aZHfEMn1Bv4MfMiCX%2BNy3Kj2pVHUaIc3pnCtI; Path=/; Expires=Fri, 12 Apr 2024 12:02:18 GMT; HttpOnly
-Content-Type: application/json
+Authorization : token xxx
 
 
 ### route pour deconnexion user
 
 POST http://localhost:5000/user/4/logout
-Cookie: connect.sid=s%3AggT6DRIdgl71hDwqMtekdmXYTbiVL__1.n31JUkTOhwFATLpLWFEVo7NVEP7HLoUYmI5njQvqZ0c; Path=/; Expires=Fri, 12 Apr 2024 09:59:07 GMT; HttpOnly
-Content-Type: application/json
+Authorization : token xxx

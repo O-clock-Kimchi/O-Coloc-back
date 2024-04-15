@@ -1,6 +1,10 @@
+/* eslint-disable object-curly-newline */
+/* eslint-disable consistent-return */
+/* eslint-disable quotes */
+/* eslint-disable comma-dangle */
 const Users = require('../models/Users');
 const bcrypt = require('bcrypt');
-
+const jwt = require('jsonwebtoken');
 
 // Function to create a new user
 exports.signup = async (req, res) => {
@@ -14,7 +18,6 @@ exports.signup = async (req, res) => {
             return res.status(400).json({ message: "Le mot de passe doit contenir au moins 8 caractères, une lettre majuscule, une lettre minuscule, un chiffre et un caractère spécial parmi !@#$%^&*." });
         }
 
-
         // Check if the email format is valid
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(email)) {
@@ -27,7 +30,6 @@ exports.signup = async (req, res) => {
             return res.status(400).json({ message: "L'adresse e-mail est déjà enregistrée." });
         }
 
-
         // Hash password
         const hashedPassword = await bcrypt.hash(password, 10);
 
@@ -39,11 +41,20 @@ exports.signup = async (req, res) => {
             color
         });
 
-        //Save user in session
-        req.session.userId = newUser.user_id;
-        console.log("User ID in session:", req.session.userId);
-
-        res.status(201).json({ message: "Utilisateur créé avec succès" });
+        // Generate JWT Token
+        const token = jwt.sign(
+            { user_id: newUser.user_id },
+            process.env.ACCESS_TOKEN_SECRET,
+            { expiresIn: '1h' } // Configure the token to be valid for 1 hour
+        );
+            // Envoyer le cookie avec le JWT
+        res.cookie('token', token, {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === 'production', // Assurez-vous que 'secure' est vrai en production
+            sameSite: 'strict', // ou 'lax' selon votre besoin
+            maxAge: 3600000 // 1 heure en millisecondes
+        });
+        res.status(201).json({ message: "Utilisateur créé avec succès", token });
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: "Erreur de serveur" });

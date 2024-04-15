@@ -9,11 +9,11 @@ const Users = require('../models/Users');
 exports.getProfile = async (req, res) => {
     try {
         // Vérifier si l'utilisateur est authentifié
-        if (!req.session.userId) {
+        if (!req.userId) {
             return res.status(401).json({ message: "Non autorisé. Veuillez vous connecter pour accéder à votre profil." });
         }
 
-        const userId = req.session.userId; // Récupérer l'ID de l'utilisateur à partir de la session
+        const userId = req.userId; // Récupérer l'ID de l'utilisateur à partir de la session
 
         // Récupérer les informations de l'utilisateur à partir de la base de données
         const user = await Users.findByPk(userId, { attributes: { exclude: ['password'] } });
@@ -21,7 +21,7 @@ exports.getProfile = async (req, res) => {
         if (!user) {
             return res.status(404).json({ message: "Utilisateur non trouvé." });
         }
-        
+
         res.status(200).json(user);
     } catch (error) {
         console.error(error);

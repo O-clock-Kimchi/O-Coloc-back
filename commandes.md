@@ -30,3 +30,9 @@ npm install cors
 
 <!-- Dépendance pour gérer l'authentification par le compte Google -->
 npm install passport passport-google-oauth20
+
+<!-- Changement majeur sur le projet de express-session à JWT car difficultés à gérer les cookies côté front -->
+npm install jsonwebtoken
+
+<!-- Pour générer une chaîne aléatoire encodée en base64 pour la clé secrète -->
+openssl rand -base64 32

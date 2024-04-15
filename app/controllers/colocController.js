@@ -21,19 +21,18 @@ const colocController = {
     // Reclaim our coloc
     async show(req, res) {
         try {
-            if (!req.session.userId) {
+            if (!req.userId) {
                 return res.status(401).json({ message: "Non autorisé. Veuillez vous connecter pour recupérer votre coloc." });
             }
-            const user = await Users.findOne({where:{user_id:req.session.userId}});
+            const user = await Users.findOne({where:{user_id:req.userId}});
             
             if (!user) {
                 return res.status(404).json({ message: "Utilisateur non trouvé." });
             }
 
             const id = req.params.id;
-           
+
             const coloc = await Colocs.findByPk(id);
-            
 
             if (!coloc) {
                 return res.status(404).json({ message: "Colocation non trouvée." });
@@ -100,7 +99,7 @@ const colocController = {
     async create(req, res) {
         try {
             const { name } = req.body;
-            if (!req.session.userId) {
+            if (!req.userId) {
                 return res.status(401).json({ message: "Non autorisé. Veuillez vous connecter pour créer une coloc." });
             }
             if (!isValidName(name)) {
@@ -111,15 +110,17 @@ const colocController = {
             }
             const code = Math.floor(10000000 + Math.random() * 90000000).toString().substring(0, 8);
 
-            const user = await Users.findByPk(req.session.userId);
+            const user = await Users.findByPk(req.userId);
             if (user.current_coloc_id){
                 return res.status(400).json({ message: "Vous êtes déjà membre d'une coloc!" });
             }
 
-            const newColoc = await Colocs.create({ name, user_id: req.session.userId, lien_coloc: code, groupe_code_valid:code});
+            const newColoc = await Colocs.create({ 
+                name, user_id: req.userId, lien_coloc: code, groupe_code_valid:code
+            });
             res.status(201).json(newColoc);
 
-            await Users.update({current_coloc_id: newColoc.coloc_id},{where:{user_id:req.session.userId}});
+            await Users.update({current_coloc_id: newColoc.coloc_id}, {where:{user_id:req.userId}});
                         
         } catch (error) {
             console.error('Erreur lors de la création de la colocation :', error);
@@ -133,16 +134,16 @@ const colocController = {
             const { groupe_code_valid } = req.body;
             const coloc = await Colocs.findOne({ where: { groupe_code_valid } });
             
-            if (!req.session.userId) {
+            if (!req.userId) {
                 return res.status(401).json({ message: "Non autorisé. Veuillez vous connecter pour rejoindre une coloc." });
             }
-            const user = await Users.findByPk(req.session.userId);
+            const user = await Users.findByPk(req.userId);
             if (user.current_coloc_id){
                 return res.status(400).json({ message: "Vous êtes déjà membre d'une coloc!" });
             }
             if (coloc) {
                 if (coloc.groupe_code_valid === groupe_code_valid) {
-                    await Users.update({current_coloc_id: coloc.coloc_id}, {where:{user_id:req.session.userId}});
+                    await Users.update({current_coloc_id: coloc.coloc_id}, {where:{user_id:req.userId}});
                     
                     res.json(coloc);
                 } else {
@@ -159,7 +160,7 @@ const colocController = {
     // leave a coloc
     async handleUserLeave(req, res){
         try{
-            if (!req.session.userId) {
+            if (!req.userId) {
                 return res.status(401).json({ message: "Non autorisé. Veuillez vous connecter pour quitter une coloc." });
             }
             const user = await Users.findOne({where:{user_id:req.session.userId}});
@@ -172,7 +173,7 @@ const colocController = {
 
             await generateCodeOnUserLeave(colocId);
 
-            await Users.update({ current_coloc_id: null }, { where: { user_id: req.session.userId } });
+            await Users.update({ current_coloc_id: null }, { where: { user_id: req.userId } });
 
             const countUsersInColoc = await Users.count({ where: { current_coloc_id: colocId } });
             if (countUsersInColoc === 0) {

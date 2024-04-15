@@ -5,15 +5,7 @@
 // userRouter.js
 
 const express = require('express');
-const session = require('express-session');
 const usersRouter = express.Router();
-const app = express();
-// Configuration du middleware express-session pour ce routeur spécifique
-// app.use(session({
-//     secret: process.env.SESSION_SECRET,
-//     resave: false,
-//     saveUninitialized: true
-// }));
 
 // Importer les contrôleurs
 const { signup } = require('../controllers/usersSignupController');
@@ -22,7 +14,7 @@ const { updateProfile } = require('../controllers/usersUpdateController');
 const { deleteProfile } = require('../controllers/usersDeleteController');
 const { getProfile } = require('../controllers/usersGetProfile');
 const { logout } = require('../controllers/usersLogoutController');
-
+const authenticateToken = require('../../middlewares/authenticateToken');
 
 // Route pour l'inscription d'un nouvel utilisateur
 usersRouter.post('/signup', signup);
@@ -31,16 +23,16 @@ usersRouter.post('/signup', signup);
 usersRouter.post('/login', login);
 
 //Route pour la mise à jour du profil d'un utilisateur connecté
-usersRouter.put('/user/:userId/profile', updateProfile);
+usersRouter.put('/user/:userId/profile', authenticateToken, updateProfile);
 
 //Route pour la suppression d'un compte utilisateur (utilisateur connecté)
-usersRouter.delete('/user/:userId/delete', deleteProfile);
+usersRouter.delete('/user/:userId/delete', authenticateToken, deleteProfile);
 
 //Route pour la consultation de la page profil par l'utilisateur
-usersRouter.get('/user/:userId/profile', getProfile);
+usersRouter.get('/profile', authenticateToken, getProfile);
 
 //Route pour la deconnexion du user
-usersRouter.post('/user/:userId/logout', logout);
+usersRouter.post('/user/:userId/logout', authenticateToken, logout);
 
 // module.exports = usersRouter;
 module.exports = usersRouter;

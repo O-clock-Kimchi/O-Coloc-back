@@ -4,14 +4,14 @@ const Users = require('../models/Users');
 exports.deleteProfile = async (req, res) => {
     try {
         // Vérifier si l'utilisateur est authentifié
-        if (!req.session.userId) {
+        if (!req.userId) {
             return res.status(401).json({ message: "Non autorisé. Veuillez vous connecter pour supprimer votre profil." });
         }
 
         const userIdToDelete = req.params.userId.toString();
         console.log("User ID to delete:", userIdToDelete); // Vérifier la valeur de userIdToDelete
 
-        const loggedInUserId = req.session.userId.toString();
+        const loggedInUserId = req.userId.toString();
         console.log("Logged in User ID:", loggedInUserId); // Vérifier la valeur de l'ID de l'utilisateur connecté
 
         // Vérifier si l'utilisateur à supprimer est le même que celui connecté

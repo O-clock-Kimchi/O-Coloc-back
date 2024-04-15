@@ -19,16 +19,17 @@ const { Sequelize } = require('sequelize');
 const bcrypt = require('bcrypt');
 
 // Configuration de nodemailer avec tes informations
-const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-        type: 'OAuth2',
-      user: process.env.EMAIL_USERNAME, // L'adresse email utilisée pour envoyer les emails
-        clientId: process.env.OAUTH_CLIENTID,
-        clientSecret: process.env.OAUTH_CLIENT_SECRET,
-        refreshToken: process.env.OAUTH_REFRESH_TOKEN,
-    }
-});
+    const transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            type: 'OAuth2',
+            user: process.env.EMAIL_USERNAME,
+            clientId: process.env.OAUTH_CLIENTID,
+            clientSecret: process.env.OAUTH_CLIENT_SECRET,
+            refreshToken: process.env.OAUTH_REFRESH_TOKEN,
+            accessToken: "ya29.a0Ad52N3_NTroTZgoPKClY1Ei7VQXTonzZSMyh2p6RmzFOSrrFyw6UzsunPHc-ErXgHDqCMI1NvqzMglF7yrUDxIEVdDlEQfqa0lqeq9rDCStWuWVECkr0MYnbAIpMwvEIwEGw7ovDbKpUmB8sUh6oxG3mqNy0rVK2hJERaCgYKARgSARISFQHGX2MiPQ3sh9Z_fFe4c5NDp8uvCQ0171"
+        }
+    });
 
 const PasswordResetController = {
 async requestPasswordReset(req, res) {
@@ -76,7 +77,7 @@ async requestPasswordReset(req, res) {
     });
 },
 
-  // Méthode pour valider le token de réinitialisation
+    // Méthode pour valider le token de réinitialisation
 async resetPassword(req, res) {
     try {
         const { token, userId, newPassword } = req.body;
@@ -133,4 +134,5 @@ async validateResetToken(req, res) {
 
 }
 };
+
 module.exports = PasswordResetController;

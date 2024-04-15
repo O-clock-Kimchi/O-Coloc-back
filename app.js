@@ -1,11 +1,9 @@
 /* eslint-disable func-names */
 /* eslint-disable object-shorthand */
-/* eslint-disable comma-dangle */
 /* eslint-disable linebreak-style */
 const express = require('express');
 const passport = require('passport');
-const session = require('express-session');
-require('./config/passport-setup'); // Configuration de Passport
+require('./config/passport-setup'); // Configuration de Passport, assurez-vous que cela utilise aussi JWT si nécessaire
 const cors = require('cors');
 
 const allowedOrigins = ['http://localhost:5173', 'http://localhost:5174'];
@@ -25,36 +23,20 @@ app.use(cors({
         }
         return callback(null, true);
     },
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'], // Méthodes HTTP autorisées
-    allowedHeaders: ['Content-Type', 'Authorization'], // En-têtes autorisés
-    credentials: true, // Autorise l'envoi des cookies
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true,
 }));
 
-// Middleware pour parser le body des requêtes en JSON
 app.use(express.json());
-
-// Middleware pour analyser les données de formulaire URL-encoded
 app.use(express.urlencoded({ extended: true }));
 
-// Configuration du middleware express-session
-app.use(session({
-    secret: process.env.SESSION_SECRET,
-    resave: false,
-    saveUninitialized: true,
-    cookie: {
-        secure: false,
-        httpOnly: true,
-        maxAge: 1000 * 60, // 1min
-    },
-}));
-
-// Initialisation de Passport
+// Retirer express-session et configurer JWT pour l'authentification
+    // Assurez-vous que Passport utilise aussi JWT si c'est nécessaire pour la stratégie
 app.use(passport.initialize());
-app.use(passport.session());
 
 app.use(router);
 
-// Synchronisation des modèles avec la base de données et démarrage du serveur
 app.set('port', process.env.PORT || 5000);
 app.set('base_url', process.env.BASE_URL || 'http://localhost');
 
