@@ -54,7 +54,7 @@ exports.signup = async (req, res) => {
             sameSite: 'strict', // ou 'lax' selon votre besoin
             maxAge: 3600000 // 1 heure en millisecondes
         });
-        res.status(201).json({ message: "Utilisateur créé avec succès", token });
+        res.status(201).json({ message: "Utilisateur créé avec succès", token, user: req.user });
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: "Erreur de serveur" });

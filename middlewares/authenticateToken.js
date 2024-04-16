@@ -17,7 +17,8 @@ function authenticateToken(req, res, next) {
             return res.sendStatus(403); // Token invalide
         }
         req.userId = user.user_id;
-        req.user = user;
+        req.user = Object.assign({}, user);
+        delete req.user.password;
         next();
     });
 }
