@@ -47,13 +47,7 @@ exports.signup = async (req, res) => {
             process.env.ACCESS_TOKEN_SECRET,
             { expiresIn: '1h' } // Configure the token to be valid for 1 hour
         );
-        const userToSend = {
-            userId: user.user_id,
-            email: user.email,
-            color: user.color,
-            firstname: user.firstname,
-            currentColocId: user.current_coloc_id,
-        };
+       
             // Envoyer le cookie avec le JWT
         res.cookie('token', token, {
             httpOnly: true,
@@ -63,8 +57,7 @@ exports.signup = async (req, res) => {
         });
         res.status(201).json({
             message: "Utilisateur connecté avec succès",
-            token,
-            user: userToSend,
+            token
         });
     } catch (error) {
         console.error(error);
