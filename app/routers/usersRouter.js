@@ -23,16 +23,16 @@ usersRouter.post('/signup', signup);
 usersRouter.post('/login', login);
 
 //Route pour la mise à jour du profil d'un utilisateur connecté
-usersRouter.put('/user/:userId/profile', authenticateToken, updateProfile);
+usersRouter.put('/profile', authenticateToken, updateProfile);
 
 //Route pour la suppression d'un compte utilisateur (utilisateur connecté)
-usersRouter.delete('/user/:userId/delete', authenticateToken, deleteProfile);
+usersRouter.delete('/delete', authenticateToken, deleteProfile);
 
 //Route pour la consultation de la page profil par l'utilisateur
 usersRouter.get('/profile', authenticateToken, getProfile);
 
 //Route pour la deconnexion du user
-usersRouter.post('/user/:userId/logout', authenticateToken, logout);
+usersRouter.post('/logout', authenticateToken, logout);
 
 // module.exports = usersRouter;
 module.exports = usersRouter;
