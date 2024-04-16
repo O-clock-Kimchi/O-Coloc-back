@@ -56,3 +56,6 @@ Authorization : token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo3LCJpY
 
 POST http://localhost:5000/user/4/logout
 Authorization : token xxx
+
+###route pour un refresh token
+GET http://localhost:5000/refresh-token
