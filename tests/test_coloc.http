@@ -1,6 +1,6 @@
 ###creer coloc en post
-POST http://localhost:3000/colocs/create
-Cookie: connect.sid=s%3AzVqAFsODVCFnie5vdT-UXCzRLaSEMRaS.HO1%2BSU3B5%2BOTEbz1N6qdk44VKRqq18BvOq8qD9K7ALQ; Path=/; Expires=Thu, 11 Apr 2024 11:55:47 GMT; HttpOnly
+POST http://localhost:5000/colocs/create
+Authorization : token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo3LCJpYXQiOjE3MTMyNTUyNjgsImV4cCI6MTcxMzI1ODg2OH0.5gWQbOOIcIEM6ry1m24UxM0BfwMs576YyuW0ag3RGR8
 Content-Type: application/json
 
 {
@@ -9,12 +9,13 @@ Content-Type: application/json
 }
 
 ###recuperer une coloc
-GET http://localhost:5000/colocs/10
-Cookie: connect.sid=s%3APxrnzcxQxyWs3ONdpQoPnCpKtQB7MvnC.oUQfxTHsWMyEqJjjgHNTODIHZ35eRugRgiNQLSnfXbc; Path=/; Expires=Fri, 12 Apr 2024 09:12:36 GMT; HttpOnly
+GET http://localhost:5000/colocs/11
+Authorization : token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo3LCJpYXQiOjE3MTMyNTUyNjgsImV4cCI6MTcxMzI1ODg2OH0.5gWQbOOIcIEM6ry1m24UxM0BfwMs576YyuW0ag3RGR8
 Content-Type: application/json
 
 ###mettre a jour coloc
-PATCH http://172.25.192.189:5000/colocs/5
+PATCH http://localhost:5000/colocs/11
+Authorization : token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo3LCJpYXQiOjE3MTMyNTUyNjgsImV4cCI6MTcxMzI1ODg2OH0.5gWQbOOIcIEM6ry1m24UxM0BfwMs576YyuW0ag3RGR8
 Content-Type: application/json
 
 {
@@ -22,12 +23,12 @@ Content-Type: application/json
 }
 
 ###supprimer une coloc
-DELETE http://localhost:5000/colocs/9
-Content-Type: application/json
+DELETE http://localhost:5000/colocs/10
+Authorization : token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo3LCJpYXQiOjE3MTMyNTUyNjgsImV4cCI6MTcxMzI1ODg2OH0.5gWQbOOIcIEM6ry1m24UxM0BfwMs576YyuW0ag3RGR8
 
 ###rejoindre une coloc en post
 POST http://localhost:5000/colocs/join
-Cookie:connect.sid=s%3Aixt27oc-vSzgmQuBmcC0JY7IR0NcqbxL.IkllbIPHk%2FzBhdgmLO0qyfA4Vs5yoA85oUX%2FF3ZMxV8; Path=/; Expires=Fri, 12 Apr 2024 11:38:04 GMT; HttpOnly
+Authorization : token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo3LCJpYXQiOjE3MTMyNTUyNjgsImV4cCI6MTcxMzI1ODg2OH0.5gWQbOOIcIEM6ry1m24UxM0BfwMs576YyuW0ag3RGR8
 Content-Type: application/json
 
 {
@@ -36,5 +37,8 @@ Content-Type: application/json
 
 ###quitter une coloc en post
 POST http://localhost:5000/colocs/10/leave
-Cookie:connect.sid=s%3ASw7xucIT0gNNLBMjBpeeq08rQAm4PLcP.LLLHLz%2FB436%2BDH4YjJQgcmcRak1rFmRpD4FlV5Xm%2BQ4; Path=/; Expires=Fri, 12 Apr 2024 09:18:30 GMT; HttpOnly
-Content-Type: application/json
+Authorization : token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo3LCJpYXQiOjE3MTMyNTUyNjgsImV4cCI6MTcxMzI1ODg2OH0.5gWQbOOIcIEM6ry1m24UxM0BfwMs576YyuW0ag3RGR8
+
+###Generate new code for coloc
+PATCH http://localhost:5000/colocs/10/code
+Authorization : token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo3LCJpYXQiOjE3MTMyNTUyNjgsImV4cCI6MTcxMzI1ODg2OH0.5gWQbOOIcIEM6ry1m24UxM0BfwMs576YyuW0ag3RGR8

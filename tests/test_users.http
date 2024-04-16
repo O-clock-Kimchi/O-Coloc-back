@@ -1,31 +1,32 @@
 ###creer route SIGNUP en post
-POST http://172.25.192.189:5000/signup
+POST http://localhost:5000/signup
 Content-Type: application/json
 
 
 {
-    "firstname":"test",
-    "email":"test.4870@gmail.com",
-    "password":"Test44000!",
+    "firstname":"testi",
+    "email":"teste.4870@gmail.com",
+    "password":"TTesti40&",
     "color": "#343434"
     
 }
 
 ###creer route LOGIN en post
-POST http://172.25.192.189:5000/login
+POST http://localhost:5000/login
 Content-Type: application/json
 
 
 {
-    "email":"test.4870@gmail.com",
-    "password":"Test44000!"  
+    "email":"teste.4870@gmail.com",
+    "password":"TTesti40&"  
 }
 
 ###creer route UPDATE en put/update
 
-PUT http://172.25.192.189:5000/user/10/profile
+PUT http://localhost:5000/profile
+Authorization : token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo3LCJpYXQiOjE3MTMyNTg5MTcsImV4cCI6MTcxMzI2MjUxN30.FarMaknLtLlJxsz8X1NYUrgN0w5NhOdjgUdTYsHiNxQ
 Content-Type: application/json
-Authorization : token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxMCwiaWF0IjoxNzEzMTkxMDAzLCJleHAiOjE3MTMxOTQ2MDN9.g-k_WnSKkuY0iaHHxeEXmw1zHRct9uoQ4rMwXCKt5_o
+
 
 {
     "firstname": "TestUpDate",
@@ -35,20 +36,20 @@ Authorization : token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxMCwia
 }
 
 ###creer route DELETE en delete
-DELETE http://172.25.192.189:5000/user/5/delete
-Authorization : token xxx
+DELETE http://localhost:5000/delete
+Authorization : token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo4LCJpYXQiOjE3MTMyNTk1MjksImV4cCI6MTcxMzI2MzEyOX0.jqmJKgA62AoMxlvzmN1Bsoc65LBGpUcYY4bAw5pAY88
 
 ###creer route GET consultation Profil par le user
-GET http://172.25.192.189:5000/profile
-Authorization : token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxMCwiaWF0IjoxNzEzMTkyMDI3LCJleHAiOjE3MTMxOTU2Mjd9.mmVudHM9TI6BE-cTimpVBD8pw_Dfx4geuhkBcGE23XA
+GET http://localhost:5000/profile
+Authorization : token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo3LCJpYXQiOjE3MTMyNTg5MTcsImV4cCI6MTcxMzI2MjUxN30.FarMaknLtLlJxsz8X1NYUrgN0w5NhOdjgUdTYsHiNxQ
 
 ###Route pour recuperer tous les users d'une coloc
 GET http://localhost:5000/colocs/10/users
-Authorization : token xxx
+Authorization : token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo3LCJpYXQiOjE3MTMyNTUyNjgsImV4cCI6MTcxMzI1ODg2OH0.5gWQbOOIcIEM6ry1m24UxM0BfwMs576YyuW0ag3RGR8
 
 ###Route pour recuperer tous les tasks d'une coloc
 GET http://localhost:5000/colocs/10/tasks
-Authorization : token xxx
+Authorization : token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo3LCJpYXQiOjE3MTMyNTg5MTcsImV4cCI6MTcxMzI2MjUxN30.FarMaknLtLlJxsz8X1NYUrgN0w5NhOdjgUdTYsHiNxQ
 
 
 ### route pour deconnexion user
