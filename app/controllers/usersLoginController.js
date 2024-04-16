@@ -42,6 +42,15 @@ exports.login = async (req, res) => {
                 firstname: user.firstname,
                 currentColocId: user.current_coloc_id,
             };
+
+        // Fonction pour créer un nouveau refresh token
+        const generateRefreshToken = (user_id) => {
+            return jwt.sign({ user_id }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '7d' });
+        };
+
+        // Générer le Refresh Token
+        const refreshToken = generateRefreshToken(user.user_id);
+
             // Envoyer le cookie avec le JWT
         res.cookie('token', token, {
             httpOnly: true,
@@ -49,10 +58,26 @@ exports.login = async (req, res) => {
             sameSite: 'strict', // ou 'lax' selon votre besoin
             maxAge: 3600000 // 1 heure en millisecondes
         });
+
+                    // Envoyer le cookie avec le Refresh Token
+        res.cookie('refreshToken', refreshToken, {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === 'production',
+            sameSite: 'strict',
+            maxAge: 7 * 24 * 60 * 60 * 1000 // 7 jours en millisecondes
+        });
+
         res.status(201).json({
             message: "Utilisateur connecté avec succès",
             token,
-            user: userToSend,
+            user: {
+                userId: user.user_id,
+                email: user.email,
+                color: user.color,
+                firstname: user.firstname,
+                currentColocId: user.current_coloc_id,
+            },
+            refreshToken
           });
     } catch (error) {
         console.error(error);

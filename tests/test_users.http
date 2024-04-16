@@ -4,9 +4,9 @@ Content-Type: application/json
 
 
 {
-    "firstname":"testi",
-    "email":"teste.4870@gmail.com",
-    "password":"TTesti40&",
+    "firstname":"John Doe",
+    "email":"johndoe@index.com",
+    "password":"DoeJohn4444!",
     "color": "#343434"
     
 }
@@ -17,19 +17,18 @@ Content-Type: application/json
 
 
 {
-    "email":"teste.4870@gmail.com",
-    "password":"TTesti40&"  
+    "email":"balou@index.com",
+    "password":"Balou4444!"  
 }
 
 ###creer route UPDATE en put/update
 
 PUT http://localhost:5000/profile
-Authorization : token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo3LCJpYXQiOjE3MTMyNTg5MTcsImV4cCI6MTcxMzI2MjUxN30.FarMaknLtLlJxsz8X1NYUrgN0w5NhOdjgUdTYsHiNxQ
 Content-Type: application/json
-
+Authorization : Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo3MCwiaWF0IjoxNzEzMjk1Nzc2LCJleHAiOjE3MTM5MDA1NzZ9.TL517GSbu5-VPWvUMCeMxua3rpWmpkd_G9rJcwGbMPo
 
 {
-    "firstname": "TestUpDate",
+    "firstname": "John Doe 44",
     "email": "",
     "color": "",
     "password": ""
@@ -37,11 +36,11 @@ Content-Type: application/json
 
 ###creer route DELETE en delete
 DELETE http://localhost:5000/delete
-Authorization : token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo4LCJpYXQiOjE3MTMyNTk1MjksImV4cCI6MTcxMzI2MzEyOX0.jqmJKgA62AoMxlvzmN1Bsoc65LBGpUcYY4bAw5pAY88
+Authorization : token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo2NywiaWF0IjoxNzEzMjkxOTMwLCJleHAiOjE3MTM4OTY3MzB9.7jaHJ7XUoCL3SXWGLdHHJt4LSyh9ABIo956PkfFVH88
 
 ###creer route GET consultation Profil par le user
 GET http://localhost:5000/profile
-Authorization : token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo3LCJpYXQiOjE3MTMyNTg5MTcsImV4cCI6MTcxMzI2MjUxN30.FarMaknLtLlJxsz8X1NYUrgN0w5NhOdjgUdTYsHiNxQ
+Authorization : token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo2NywiaWF0IjoxNzEzMjkxOTMwLCJleHAiOjE3MTM4OTY3MzB9.7jaHJ7XUoCL3SXWGLdHHJt4LSyh9ABIo956PkfFVH88
 
 ###Route pour recuperer tous les users d'une coloc
 GET http://localhost:5000/colocs/10/users
