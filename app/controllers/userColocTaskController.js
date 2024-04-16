@@ -21,7 +21,8 @@ const userColocTaskController={
             if(user){
                 const allUsers = user.map(users => ({
                     user_id: users.user_id,
-                    firstname: users.firstname
+                    firstname: users.firstname,
+                    color: users.color
                     
                 }));
                 
@@ -59,9 +60,13 @@ const userColocTaskController={
                     const tasks = await Tasks.findAll({ where: { user_id: users.user_id } });
                     for (const task of tasks) {
                         allTasks.push({
-                            task_id: task.task_id,
+                            tasks_id: task.tasks_id,
                             description: task.description,
                             user_id: task.user_id,
+                            due_date: task.due_date,
+                            is_done: task.is_done,
+                            created_at: task.created_at,
+                            is_predefined: task.is_predefined,
                             frequency: task.frequency
                         });
                     } 

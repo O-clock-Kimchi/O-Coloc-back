@@ -11,4 +11,7 @@ colocsRouter.post('/colocs/join', authenticateToken, colocController.join);
 
 colocsRouter.post('/colocs/:id/leave', authenticateToken, colocController.handleUserLeave);
 
+colocsRouter.patch('/colocs/:id/code', colocController.generateNewCode);
+
+
 module.exports = colocsRouter;

@@ -188,8 +188,29 @@ const colocController = {
             return res.status(500).json({ message: "Erreur lors de la gestion du départ de l'utilisateur de la colocation." });
         }
 
-    }
-
+    },
+    async generateNewCode(req, res) {
+        try {
+          const id = req.params.id;
+          const coloc = await Colocs.findByPk(id);
+          if (coloc) {
+            const code = Math.floor(10000000 + Math.random() * 90000000)
+              .toString()
+              .substring(0, 8);
+            await coloc.update({ lien_coloc: code, groupe_code_valid: code });
+            res
+              .status(200)
+              .json({ message: "Changement de code effectué", newCode: code });
+          } else {
+            res.status(404).json({
+              message:
+                "Colocation non trouvée lors de la génération du code pour la colocation ",
+            });
+          }
+        } catch (error) {
+          res.status(500).json({ message: "Une erreur est survenue" });
+        }
+    },
 };
 
 module.exports = colocController;
