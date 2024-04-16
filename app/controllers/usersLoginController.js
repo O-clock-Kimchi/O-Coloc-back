@@ -34,7 +34,14 @@ exports.login = async (req, res) => {
             { user_id: user.user_id },
             process.env.ACCESS_TOKEN_SECRET,
             { expiresIn: '1h' } // Configure the token to be valid for 1 hour
-        );
+            );
+            const userToSend = {
+                userId: user.user_id,
+                email: user.email,
+                color: user.color,
+                firstname: user.firstname,
+                currentColocId: user.current_coloc_id,
+            };
             // Envoyer le cookie avec le JWT
         res.cookie('token', token, {
             httpOnly: true,
@@ -42,7 +49,11 @@ exports.login = async (req, res) => {
             sameSite: 'strict', // ou 'lax' selon votre besoin
             maxAge: 3600000 // 1 heure en millisecondes
         });
-        res.status(201).json({ message: "Utilisateur connecté avec succès", token, user:req.user });
+        res.status(201).json({
+            message: "Utilisateur connecté avec succès",
+            token,
+            user: userToSend,
+          });
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: "Erreur de serveur" });
