@@ -1,13 +1,14 @@
 ###Créer une nouvelle tâche
 POST http://localhost:5000/tasks
-Authorization : token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo4LCJpYXQiOjE3MTMyNTk1MjksImV4cCI6MTcxMzI2MzEyOX0.jqmJKgA62AoMxlvzmN1Bsoc65LBGpUcYY4bAw5pAY88
+Authorization : token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo5LCJpYXQiOjE3MTMyNjgyNjQsImV4cCI6MTcxMzI3MTg2NH0.Nw24asqgh673RUhLcLppIBwEoWCNgguEKz2c1iSpISY
 Content-Type: application/json
 
 {
     "description": "Faire les courses",
     "is_predefined": false,
     "is_done": false,
-    "frequency": 14
+    "frequency": 14,
+    "user_id":3
 }
 
 ### Get All Tasks
@@ -16,15 +17,16 @@ Content-Type: application/json
 
 
 ### Update Task
-PUT http://localhost:5000/tasks/5
-Authorization : token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo3LCJpYXQiOjE3MTMyNTUyNjgsImV4cCI6MTcxMzI1ODg2OH0.5gWQbOOIcIEM6ry1m24UxM0BfwMs576YyuW0ag3RGR8
+PUT http://localhost:5000/tasks/15
+Authorization : token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo5LCJpYXQiOjE3MTMyNjgyNjQsImV4cCI6MTcxMzI3MTg2NH0.Nw24asqgh673RUhLcLppIBwEoWCNgguEKz2c1iSpISY
 Content-Type: application/json
 
 {
     "description": "Aspiro",
     "is_predefined": false,
     "is_done": true,
-    "frequency": 7
+    "frequency": 7,
+    "user_id": 3
 }
 
 

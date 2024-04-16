@@ -19,7 +19,7 @@ const TaskController = {
     if (!user) {
       return res.status(404).json({ message: "Utilisateur non trouvé." });
     }
-    const { description, is_predefined, is_done, frequency } = req.body;
+    const { description, is_predefined, is_done, frequency, user_id } = req.body;
     let dueDate = dayjs();
     
     // Détermine la due_date basée sur la fréquence
@@ -40,7 +40,7 @@ const TaskController = {
         is_done,
         frequency,
         due_date: dueDate.toDate(),
-        user_id: req.userId
+        user_id
       });
       res.status(201).json(task);
     } catch (error) {
@@ -69,7 +69,7 @@ const TaskController = {
       return res.status(404).json({ message: "Utilisateur non trouvé." });
     }
     const { taskId } = req.params;
-    const { description, is_predefined, is_done, frequency } = req.body;
+    const { description, is_predefined, is_done, frequency, user_id } = req.body;
     
     try {
       const task = await Task.findByPk(taskId);
@@ -104,7 +104,7 @@ const TaskController = {
           is_done,
           frequency,
           due_date: dueDate.toDate(),
-          user_id: req.userId
+          user_id
         }, {
           where: { tasks_id: taskId }
         });
