@@ -9,7 +9,6 @@ exports.updateProfile = async (req, res) => {
             return res.status(401).json({ message: "Non autorisé. Veuillez vous connecter pour mettre à jour votre profil." });
         }
 
-        const userId = req.params.userId;
         const { firstname, email, color, password } = req.body;
 
         // Construire l'objet des modifications
@@ -29,7 +28,7 @@ exports.updateProfile = async (req, res) => {
         }
 
         // Mettre à jour le profil de l'utilisateur dans la base de données
-        await Users.update(updates, { where: { user_id: userId } });
+        await Users.update(updates, { where: { user_id: req.userId } });
 
         res.status(200).json({ message: "Profil mis à jour avec succès" });
     } catch (error) {

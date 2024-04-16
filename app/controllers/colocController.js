@@ -58,19 +58,21 @@ const colocController = {
         try {
             const id = req.params.id;
             const name = req.body.name;
-            
             const coloc = await Colocs.findByPk(id);
+            const user = await Users.findOne({where:{user_id:req.userId}});
+            const creatorUser = await Users.findByPk(coloc.user_id);
+            
             if (!isValidName(name)) {
                 return res.status(400).json({ message: "Le nom de la colocation doit faire au minimum 4 caractères." });
             }
             if (isValidNameRegex(name)) {
                 return res.status(400).json({ message: "Le nom de la colocation contient des mots interdits." });
             }
-            if (coloc) {
+            if (coloc.user_id===req.userId || user.current_coloc_id === creatorUser.current_coloc_id) {
                 await coloc.update({ name });
                 res.json({ message: 'Nom de la colocation mis à jour avec succès' });
             } else {
-                res.status(404).json({ message: 'Colocation non trouvée' });
+                res.status(404).json({ message: 'Cette coloc existe peut-etre mais ce n\'est pas la tienne!' });
             }
         } catch (error) {
             console.error('Erreur lors de la modification du nom de la colocation :', error);
@@ -83,11 +85,13 @@ const colocController = {
         try {
             const id = req.params.id;
             const coloc = await Colocs.findByPk(id);
-            if (coloc) {
+            const user = await Users.findOne({where:{user_id:req.userId}});
+            const creatorUser = await Users.findByPk(coloc.user_id);
+            if (coloc.user_id===req.userId || user.current_coloc_id === creatorUser.current_coloc_id) {
                 await coloc.destroy();
                 res.json({ message: 'Colocation supprimée avec succès' });
             } else {
-                res.status(404).json({ message: 'Colocation non trouvée' });
+                res.status(404).json({ message: 'Cette coloc existe peut-etre mais ce n\'est pas la tienne!' });
             }
         } catch (error) {
             console.error('Erreur lors de la suppression de la colocation :', error);
@@ -163,8 +167,8 @@ const colocController = {
             if (!req.userId) {
                 return res.status(401).json({ message: "Non autorisé. Veuillez vous connecter pour quitter une coloc." });
             }
-            const user = await Users.findOne({where:{user_id:req.session.userId}});
-            // const user = await Users.findOne({ where: { user_id: req.session.userId, current_coloc_id: colocId } });}
+            const user = await Users.findOne({where:{user_id:req.userId}});
+
             if (!user) {
                 return res.status(404).json({ message: "Utilisateur non trouvé." });
             }

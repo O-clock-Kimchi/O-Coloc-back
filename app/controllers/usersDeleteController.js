@@ -8,22 +8,11 @@ exports.deleteProfile = async (req, res) => {
             return res.status(401).json({ message: "Non autorisé. Veuillez vous connecter pour supprimer votre profil." });
         }
 
-        const userIdToDelete = req.params.userId.toString();
-        console.log("User ID to delete:", userIdToDelete); // Vérifier la valeur de userIdToDelete
-
-        const loggedInUserId = req.userId.toString();
-        console.log("Logged in User ID:", loggedInUserId); // Vérifier la valeur de l'ID de l'utilisateur connecté
-
-        // Vérifier si l'utilisateur à supprimer est le même que celui connecté
-        if (loggedInUserId !== userIdToDelete) {
-            return res.status(403).json({ message: "Non autorisé. Vous n'êtes pas autorisé à supprimer ce profil." });
-        }
-
         // Supprimer le profil de l'utilisateur de la base de données
-        await Users.destroy({ where: { user_id: userIdToDelete } });
-
+        await Users.destroy({ where: { user_id: req.userId } });
+        
         // Déconnecter l'utilisateur en supprimant ses informations de session
-        req.session.destroy();
+        res.clearCookie('jwt');
 
         res.status(200).json({ message: "Profil supprimé avec succès" });
     } catch (error) {

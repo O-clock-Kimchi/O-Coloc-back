@@ -15,13 +15,13 @@ const TaskController = {
       return res.status(401).json({ message: "Non autorisé. Veuillez vous connecter pour créer une nouvelle tache." });
     }
     const user = await Users.findOne({where:{user_id:req.userId}});
-
+    
     if (!user) {
       return res.status(404).json({ message: "Utilisateur non trouvé." });
     }
     const { description, is_predefined, is_done, frequency } = req.body;
     let dueDate = dayjs();
-
+    
     // Détermine la due_date basée sur la fréquence
     if (frequency === 1) {
       dueDate = dueDate.add(1, 'day');
@@ -32,7 +32,7 @@ const TaskController = {
     } else {
       dueDate = dueDate.add(frequency, 'day');
     }
-
+    
     try {
       const task = await Task.create({
         description,
@@ -47,7 +47,7 @@ const TaskController = {
       res.status(400).json({ error: error.message });
     }
   },
-
+  
   // Récupère toutes les tâches
   async getAllTasks(_, res) {
     try {
@@ -57,28 +57,29 @@ const TaskController = {
       res.status(500).json({ error: error.message });
     }
   },
-
+  
   // Met à jour une tâche spécifique
   async updateTask(req, res) {
     if (!req.userId) {
       return res.status(401).json({ message: "Non autorisé. Veuillez vous connecter pour mettre à jour une nouvelle tache." });
     }
     const user = await Users.findOne({where:{user_id:req.userId}});
-
+    
     if (!user) {
       return res.status(404).json({ message: "Utilisateur non trouvé." });
     }
     const { taskId } = req.params;
     const { description, is_predefined, is_done, frequency } = req.body;
-
+    
     try {
       const task = await Task.findByPk(taskId);
       if (!task) {
         return res.status(404).json({ error: 'Tâche non trouvée' });
       }
-
+      
       let dueDate = dayjs(task.created_at);
-
+      
+      // Détermine la due_date basée sur la fréquence
       if (frequency === 1) {
         dueDate = dueDate.add(1, 'day');
       } else if (frequency === 7) {
@@ -88,15 +89,14 @@ const TaskController = {
       } else {
         dueDate = dueDate.add(frequency, 'day');
       }
-
       const creatorUser = await Users.findByPk(task.user_id);
-
+      
       console.log('Identifiant du user:', req.userId);
       console.log('Identifiant du user associée à la task:', task.user_id);
-
+      
       console.log('Identifiant de la coloc:', user.current_coloc_id); //  user qui veut update la task
       console.log('Identifiant de la coloc associée au user:', creatorUser.current_coloc_id);
-
+      
       if (req.userId === task.user_id || user.current_coloc_id === creatorUser.current_coloc_id) {
         await Task.update({
           description,
@@ -108,7 +108,7 @@ const TaskController = {
         }, {
           where: { tasks_id: taskId }
         });
-
+        
         res.status(200).json({ message: 'Tâche mise à jour avec succès' });
       } else {
         res.status(404).json({ message: 'Cette tache existe peut-être mais ce n\'est pas la tienne !' });
@@ -117,16 +117,16 @@ const TaskController = {
       res.status(500).json({ error: error.message });
     }
   },
-
+  
   // Supprime une tâche spécifique
   async deleteTask(req, res) {
     const { taskId } = req.params;
-
-    if (!req.session.userId) {
+    
+    if (!req.userId) {
       return res.status(401).json({ message: "Non autorisé. Veuillez vous connecter pour supprimer une tache." });
     }
     const user = await Users.findOne({ where:{user_id:req.userId }});
-
+    
     if (!user) {
       return res.status(404).json({ message: "Utilisateur non trouvé." });
     }
@@ -138,7 +138,7 @@ const TaskController = {
       const creatorUser = await Users.findByPk(task.user_id);
       if (req.userId === task.user_id || creatorUser.current_coloc_id === user.current_coloc_id ) {
         await Task.destroy({
-        where: { tasks_id: taskId }
+          where: { tasks_id: taskId }
         });
         res.status(200).json({ message: 'Tâche supprimée avec succès' });
       } else {
@@ -148,7 +148,7 @@ const TaskController = {
       res.status(500).json({ error: error.message });
     }
   },
-
+  
 };
 
 module.exports = TaskController;
