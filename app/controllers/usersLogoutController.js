@@ -9,7 +9,8 @@ const Users= require('../models/Users');
 exports.logout = (req, res) => {
     try {
         // Supprimer le cookie contenant le token JWT
-        res.clearCookie('jwt');
+        res.clearCookie('accessToken');
+        res.clearCookie('refreshToken');
 
         // Répondre avec un message de succès
         res.status(200).json({ message: 'Déconnexion réussie avec succès' });

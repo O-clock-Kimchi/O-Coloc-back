@@ -30,62 +30,32 @@
 // module.exports = authenticateToken;
 
 const jwt = require('jsonwebtoken');
+const Users = require('../app/models/Users');
 
 function authenticateToken(req, res, next) {
-    const authHeader = req.headers.authorization;
-    const token = authHeader && authHeader.split(' ')[1]; // Bearer TOKEN
+    const accessToken = req.cookies.accessToken;
 
-    if (token == null) {
-        return res.status(401).json({ message: "Aucun token d'accès fourni. Veuillez vous connecter pour accéder à cette ressource." });
-
-        
+    if (!accessToken) {
+        return res.status(401).json({ message: "Aucun jeton d'accès fourni. Veuillez vous connecter pour accéder à cette ressource." });
     }
 
-    jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
+    jwt.verify(accessToken, process.env.ACCESS_TOKEN_SECRET, async (err, accessTokenDecoded) => {
         if (err) {
-            const refreshToken = req.cookies.refreshToken; // Récupérer le refresh token depuis les cookies (ou autre source)
-
-            if (!refreshToken) {
-                return res.status(403).json({ message: "Aucun refresh token trouvé dans les cookies. Veuillez vous reconnecter." });
-
-            }
-
-            // Vérifiez et validez le refresh token
-            jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET, (err, user) => {
-                if (err) {
-                    return res.status(403).json({ message: "Le refresh token est invalide ou a expiré. Veuillez vous reconnecter." });
-
-                }
-
-                // Générez un nouveau JWT token
-                const newToken = jwt.sign(
-                    { user_id: user.user_id },
-                    process.env.ACCESS_TOKEN_SECRET,
-                    { expiresIn: '1h' } // Configurez le token pour être valide pendant 1 heure
-                );
-
-                // Stockez le nouveau token dans les cookies ou autre source si nécessaire
-                res.cookie('token', newToken, {
-                    httpOnly: true,
-                    secure: process.env.NODE_ENV === 'production',
-                    sameSite: 'strict',
-                    maxAge: 3600000 // 1 heure en millisecondes
-                });
-
-                req.userId = user.user_id;
-                req.user = Object.assign({}, user);
-                delete req.user.password;
-
-                next();
-            });
+            return res.status(403).json({ message: "Le jeton d'accès est invalide ou a expiré. Veuillez vous reconnecter." });
         } else {
-            req.userId = user.user_id;
-            req.user = Object.assign({}, user);
-            delete req.user.password;
-            next();
+            try {
+                const user = await Users.findOne({ where: { user_id: accessTokenDecoded.user_id } });
+                if (!user) {
+                    return res.status(404).json({ message: "Utilisateur introuvable." });
+                }
+                req.userId = user.user_id; // Attribuer l'ID de l'utilisateur à la requête
+                next();
+            } catch (error) {
+                console.error(error);
+                return res.status(500).json({ message: "Erreur de serveur lors de la recherche de l'utilisateur." });
+            }
         }
     });
 }
 
 module.exports = authenticateToken;
-

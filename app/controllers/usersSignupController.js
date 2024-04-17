@@ -5,8 +5,7 @@
 const Users = require('../models/Users');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-
-
+const { generateAccessToken, generateRefreshToken } = require('../utils/tokenService');
 
 // Function to create a new user
 exports.signup = async (req, res) => {
@@ -44,31 +43,35 @@ exports.signup = async (req, res) => {
         });
 
         // Generate JWT Token
-        const token = jwt.sign(
-            { user_id: newUser.user_id },
-            process.env.ACCESS_TOKEN_SECRET,
-            { expiresIn: '1h' } // Configure the token to be valid for 1 hour
-        );
+        // const token = jwt.sign(
+        //     { user_id: newUser.user_id },
+        //     process.env.ACCESS_TOKEN_SECRET,
+        //     { expiresIn: '1h' } // Configure the token to be valid for 1 hour
+        // );
 
         // Fonction pour créer un nouveau refresh token
-        const generateRefreshToken = (user_id) => {
-            return jwt.sign({ user_id }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '7d' });
-        };
+        // const generateRefreshToken = (user_id) => {
+        //     return jwt.sign({ user_id }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '7d' });
+        // };
 
         // Générer le Refresh Token
-        const refreshToken = generateRefreshToken(newUser.user_id);
+        // const refreshToken = generateRefreshToken(newUser.user_id);
 
-        // Stocker le Refresh Token dans la base de données
-        // TODO: Ajoutez ici le code pour stocker le refreshToken avec l'identifiant de l'utilisateur dans votre base de données
-       
+
+
+        
+        
+        const accessToken = generateAccessToken(newUser.user_id);
         // Envoyer le cookie avec le JWT
-        res.cookie('token', token, {
+        res.cookie('accessToken', accessToken, {
             httpOnly: true,
             secure: process.env.NODE_ENV === 'production', // Assurez-vous que 'secure' est vrai en production
             sameSite: 'strict', // ou 'lax' selon votre besoin
             maxAge: 3600000 // 1 heure en millisecondes
         });
 
+
+        const refreshToken = generateRefreshToken(newUser.user_id);
             // Envoyer le cookie avec le Refresh Token
         res.cookie('refreshToken', refreshToken, {
             httpOnly: true,
@@ -79,7 +82,7 @@ exports.signup = async (req, res) => {
 
         res.status(201).json({
             message: "Utilisateur connecté avec succès",
-            token,
+            accessToken,
             refreshToken
         });
     } catch (error) {

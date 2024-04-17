@@ -4,9 +4,9 @@ Content-Type: application/json
 
 
 {
-    "firstname":"John Doe",
-    "email":"johndoe@index.com",
-    "password":"DoeJohn4444!",
+    "firstname":"EMMANUELLE",
+    "email":"EMMANUELLE@index.com",
+    "password":"Emmanuelle444!",
     "color": "#343434"
     
 }
@@ -17,18 +17,18 @@ Content-Type: application/json
 
 
 {
-    "email":"balou@index.com",
-    "password":"Balou4444!"  
+    "email":"fleur@index.com",
+    "password":"Fleur444!"  
 }
 
 ###creer route UPDATE en put/update
 
 PUT http://localhost:5000/profile
 Content-Type: application/json
-Authorization : Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo3MCwiaWF0IjoxNzEzMjk1Nzc2LCJleHAiOjE3MTM5MDA1NzZ9.TL517GSbu5-VPWvUMCeMxua3rpWmpkd_G9rJcwGbMPo
+Authorization : Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo3NywiaWF0IjoxNzEzMzYzNTM0LCJleHAiOjE3MTM5NjgzMzR9.1_vCwlOoOrtYriDtIGP3XLUhzknWHLUlWnen0h3ApgY
 
 {
-    "firstname": "John Doe 44",
+    "firstname": "EMMANUELLE 44",
     "email": "",
     "color": "",
     "password": ""
@@ -53,8 +53,8 @@ Authorization : token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo3LCJpY
 
 ### route pour deconnexion user
 
-POST http://localhost:5000/user/4/logout
-Authorization : token xxx
+POST http://localhost:5000/logout
+Authorization : token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo3NywiaWF0IjoxNzEzMzYzNTM0LCJleHAiOjE3MTM5NjgzMzR9.1_vCwlOoOrtYriDtIGP3XLUhzknWHLUlWnen0h3ApgY
 
 ###route pour un refresh token
 GET http://localhost:5000/refresh-token
