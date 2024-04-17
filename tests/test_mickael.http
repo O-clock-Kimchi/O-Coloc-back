@@ -1,6 +1,6 @@
 ###Créer une nouvelle tâche
 POST http://localhost:5000/tasks
-Authorization : token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo5LCJpYXQiOjE3MTMyNjgyNjQsImV4cCI6MTcxMzI3MTg2NH0.Nw24asqgh673RUhLcLppIBwEoWCNgguEKz2c1iSpISY
+Authorization : token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyMywiaWF0IjoxNzEzMzQwOTk4LCJleHAiOjE3MTMzNDQ1OTh9.7gh4FEJqmNoROn-froyOL1rQVU2h2Np3MdT2tire7Pk
 Content-Type: application/json
 
 {
@@ -8,7 +8,7 @@ Content-Type: application/json
     "is_predefined": false,
     "is_done": false,
     "frequency": 14,
-    "user_id":3
+    "user_id":23
 }
 
 ### Get All Tasks
@@ -17,8 +17,8 @@ Content-Type: application/json
 
 
 ### Update Task
-PUT http://localhost:5000/tasks/15
-Authorization : token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo5LCJpYXQiOjE3MTMyNjgyNjQsImV4cCI6MTcxMzI3MTg2NH0.Nw24asqgh673RUhLcLppIBwEoWCNgguEKz2c1iSpISY
+PUT http://localhost:5000/tasks/13
+Authorization : token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyMywiaWF0IjoxNzEzMzQwOTk4LCJleHAiOjE3MTMzNDQ1OTh9.7gh4FEJqmNoROn-froyOL1rQVU2h2Np3MdT2tire7Pk
 Content-Type: application/json
 
 {

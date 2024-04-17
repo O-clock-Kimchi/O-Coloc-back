@@ -108,8 +108,8 @@ const TaskController = {
         }, {
           where: { tasks_id: taskId }
         });
-        
-        res.status(200).json({ message: 'Tâche mise à jour avec succès' });
+        const updatedTask = await Task.findByPk(taskId);
+        res.status(200).json({ message: 'Tâche mise à jour avec succès', updatedTask });
       } else {
         res.status(404).json({ message: 'Cette tache existe peut-être mais ce n\'est pas la tienne !' });
       }
