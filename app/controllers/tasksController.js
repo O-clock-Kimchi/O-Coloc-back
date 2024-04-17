@@ -36,13 +36,21 @@ const TaskController = {
     try {
       const task = await Task.create({
         description,
-        is_predefined,
         is_done,
         frequency,
         due_date: dueDate.toDate(),
         user_id
       });
-      res.status(201).json(task);
+      const newTask = {
+        tasks_id: task.tasks_id,
+        description: task.description,
+        is_done: task.is_done,
+        frequency: task.frequency,
+        created_at: task.created_at,
+        due_date: task.due_date,
+        user_id: task.user_id
+      };
+      res.status(201).json({ message: 'La tâche a bien été créée', task: newTask });
     } catch (error) {
       res.status(400).json({ error: error.message });
     }
