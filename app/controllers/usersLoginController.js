@@ -6,7 +6,7 @@
 const Users = require('../models/Users');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const { generateAccessToken, generateRefreshToken } = require('../utils/tokenService');
+const { generateAccessToken } = require('../utils/tokenService');
 
 // Function for user authentication
 exports.login = async (req, res) => {
@@ -26,17 +26,7 @@ exports.login = async (req, res) => {
             return res.status(400).json({ message: "Mot de passe incorrect" });
         }
         
-        // Authentification réussie
-        
-        // Stockage de l'identifiant de l'utilisateur dans la session
-        // Stockage de l'identifiant de l'utilisateur dans le token JWT
 
-        // Generate JWT Token
-        // const token = jwt.sign(
-        //     { user_id: user.user_id },
-        //     process.env.ACCESS_TOKEN_SECRET,
-        //     { expiresIn: '1h' } // Configure the token to be valid for 1 hour
-        //     );
             const userToSend = {
                 userId: user.user_id,
                 email: user.email,
@@ -45,15 +35,6 @@ exports.login = async (req, res) => {
                 currentColocId: user.current_coloc_id,
             };
 
-        // Fonction pour créer un nouveau refresh token
-        // const generateRefreshToken = (user_id) => {
-        //     return jwt.sign({ user_id }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '7d' });
-        // };
-
-        // Générer le Refresh Token
-        // const refreshToken = generateRefreshToken(user.user_id);
-
-        
         
         const accessToken = generateAccessToken(user.user_id);
         // Envoyer le cookie avec le JWT
@@ -64,20 +45,12 @@ exports.login = async (req, res) => {
             maxAge: 3600000 // 1 heure en millisecondes
         });
         
-        const refreshToken = generateRefreshToken(user.user_id);
-                    // Envoyer le cookie avec le Refresh Token
-        res.cookie('refreshToken', refreshToken, {
-            httpOnly: true,
-            secure: process.env.NODE_ENV === 'production',
-            sameSite: 'strict',
-            maxAge: 7 * 24 * 60 * 60 * 1000 // 7 jours en millisecondes
-        });
 
         res.status(201).json({
             message: "Utilisateur connecté avec succès",
             accessToken,
-            user: userToSend,
-            refreshToken,
+            user: userToSend
+
         });
     } catch (error) {
         console.error(error);

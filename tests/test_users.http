@@ -25,10 +25,10 @@ Content-Type: application/json
 
 PUT http://localhost:5000/profile
 Content-Type: application/json
-Authorization : Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo3NywiaWF0IjoxNzEzMzYzNTM0LCJleHAiOjE3MTM5NjgzMzR9.1_vCwlOoOrtYriDtIGP3XLUhzknWHLUlWnen0h3ApgY
+Authorization : Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo3NywiaWF0IjoxNzEzNDQxMDkwLCJleHAiOjE3MTM0NDQ2OTB9.t7-H3i0Oaj95PwFFw_2vpuICqIYYsQOZN5WhgVecFJk
 
 {
-    "firstname": "EMMANUELLE 44",
+    "firstname": "EMMANUELLE 88",
     "email": "",
     "color": "",
     "password": ""
@@ -56,5 +56,7 @@ Authorization : token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo3LCJpY
 POST http://localhost:5000/logout
 Authorization : token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo3NywiaWF0IjoxNzEzMzYzNTM0LCJleHAiOjE3MTM5NjgzMzR9.1_vCwlOoOrtYriDtIGP3XLUhzknWHLUlWnen0h3ApgY
 
-###route pour un refresh token
-GET http://localhost:5000/refresh-token
+
+### route pour générer un refresh token
+POST http://localhost:5000/refresh-Token
+Authorization : token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo3NywiaWF0IjoxNzEzNDQxMDkwLCJleHAiOjE3MTM0NDQ2OTB9.t7-H3i0Oaj95PwFFw_2vpuICqIYYsQOZN5WhDgVecFJk

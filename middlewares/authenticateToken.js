@@ -8,9 +8,16 @@
 const jwt = require('jsonwebtoken');
 const Users = require('../app/models/Users');
 
-function authenticateToken(req, res, next) {
-    const accessToken = req.cookies.accessToken;
 
+function authenticateToken(req, res, next) {
+    const authHeader = req.headers.authorization;
+    console.log(req.headers);
+    //* permet de récupérer le token dans le header, ici on n'utilise pas les cookies car pas sur le même PORT front/back.
+    
+    const accessToken = authHeader && authHeader.split(' ')[1]; // Extraction du token
+
+
+    console.log(accessToken);
     if (!accessToken) {
         return res.status(401).json({ message: "Aucun jeton d'accès fourni. Veuillez vous connecter pour accéder à cette ressource." });
     }

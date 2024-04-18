@@ -21,6 +21,5 @@ router.use(tasksRouter);
 router.use(passwordResetRouter);
 router.use(authGoogleRouter);
 router.use(userColocTaskRouter);
-router.use(refreshTokenRouter);
 
 module.exports = router;

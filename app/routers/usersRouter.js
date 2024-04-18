@@ -15,6 +15,8 @@ const { deleteProfile } = require('../controllers/usersDeleteController');
 const { getProfile } = require('../controllers/usersGetProfile');
 const { logout } = require('../controllers/usersLogoutController');
 const authenticateToken = require('../../middlewares/authenticateToken');
+const authenticateForRefreshToken = require('../../middlewares/authenticateForRefreshToken');
+const { refreshToken } = require('../controllers/usersRefreshTokenController');
 
 // Route pour l'inscription d'un nouvel utilisateur
 usersRouter.post('/signup', signup);
@@ -33,6 +35,9 @@ usersRouter.get('/profile', authenticateToken, getProfile);
 
 //Route pour la deconnexion du user
 usersRouter.post('/logout', authenticateToken, logout);
+
+//Route pour refresh Token
+usersRouter.post('/refresh-token', authenticateForRefreshToken, refreshToken);
 
 // module.exports = usersRouter;
 module.exports = usersRouter;
