@@ -3,10 +3,11 @@ const express = require('express');
 const userColocTaskRouter = express.Router();
 const userColocTaskController = require('../controllers/userColocTaskController');
 const authenticateToken = require('../../middlewares/authenticateToken');
-// Route pour recupérer une coloc et tous ses users
+
+// Route to recover a roommate and all its users
 userColocTaskRouter.get('/colocs/:id/users', authenticateToken, userColocTaskController.getAllUserOfColocController);
 
-// route pour recupérer toutes les tasks d'une coloc
+// route to recover all the tasks of a roommate
 userColocTaskRouter.get('/colocs/:id/tasks', authenticateToken, userColocTaskController.getAllTasksOfColocController);
 
 module.exports = userColocTaskRouter;

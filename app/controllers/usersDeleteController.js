@@ -1,17 +1,17 @@
 const Users = require('../models/Users');
 
-// Fonction pour supprimer le profil de l'utilisateur
+// Function to delete user profile
 exports.deleteProfile = async (req, res) => {
     try {
-        // Vérifier si l'utilisateur est authentifié
+        // Check if the user is authenticated
         if (!req.userId) {
             return res.status(401).json({ message: "Non autorisé. Veuillez vous connecter pour supprimer votre profil." });
         }
 
-        // Supprimer le profil de l'utilisateur de la base de données
+        // Delete user profile from database
         await Users.destroy({ where: { user_id: req.userId } });
         
-        // Déconnecter l'utilisateur en supprimant ses informations de session
+        // Log out the user by deleting their session information
         res.clearCookie('jwt');
 
         res.status(200).json({ message: "Profil supprimé avec succès" });

@@ -1,4 +1,5 @@
 const Colocs = require('../models/Colocs.js')
+
 function isValidName(name) {
     if (name.length < 4 || name.length > 50) {
         return false;

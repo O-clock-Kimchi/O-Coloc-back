@@ -5,17 +5,17 @@
 /* eslint-disable eol-last */
 const Users = require('../models/Users');
 
-// Fonction pour accéder au profil de l'utilisateur
+// Function to access the user profile
 exports.getProfile = async (req, res) => {
     try {
-        // Vérifier si l'utilisateur est authentifié
+        // Check if the user is authenticated
         if (!req.userId) {
             return res.status(401).json({ message: "Non autorisé. Veuillez vous connecter pour accéder à votre profil." });
         }
 
-        const userId = req.userId; // Récupérer l'ID de l'utilisateur à partir de la session
+        const userId = req.userId; // Get user ID from session
 
-        // Récupérer les informations de l'utilisateur à partir de la base de données
+        // Retrieve user information from database
         const user = await Users.findByPk(userId, { attributes: { exclude: ['password'] } });
 
         if (!user) {

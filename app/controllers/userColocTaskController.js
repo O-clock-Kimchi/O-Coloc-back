@@ -3,7 +3,7 @@ const Colocs = require('../models/Colocs');
 const Users = require('../models/Users');
 
 const userColocTaskController={
-    // recupération de tous les users dune coloc
+    // recovery of all users of a roommate
     async getAllUserOfColocController(req, res){
         try{
             if (!req.userId) {
@@ -36,7 +36,7 @@ const userColocTaskController={
             return res.status(500).json({ message: "Erreur lors de la recupération des users." });
         }
     },
-    // recupération les tasks d'une coloc
+    // recover tasks from a roommate
     async getAllTasksOfColocController(req, res) {
         try {
             if (!req.userId) {

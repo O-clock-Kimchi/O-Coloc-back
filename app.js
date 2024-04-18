@@ -3,7 +3,7 @@
 /* eslint-disable linebreak-style */
 const express = require('express');
 const passport = require('passport');
-require('./config/passport-setup'); // Configuration de Passport, assurez-vous que cela utilise aussi JWT si nécessaire
+require('./config/passport-setup'); // Configure Passport, make sure this also uses JWT if necessary
 const cors = require('cors');
 
 const allowedOrigins = ['http://localhost:5173', 'http://localhost:5174'];
@@ -13,7 +13,7 @@ const router = require('./app/router.js');
 
 require('dotenv').config();
 
-// Configuration de CORS
+// Configuring CORS
 app.use(cors({
     origin: function (origin, callback) {
         if (!origin) return callback(null, true);
@@ -31,8 +31,8 @@ app.use(cors({
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Retirer express-session et configurer JWT pour l'authentification
-    // Assurez-vous que Passport utilise aussi JWT si c'est nécessaire pour la stratégie
+// Remove express-session and configure JWT for authentication
+// Make sure Passport also uses JWT if it's necessary for the policy
 app.use(passport.initialize());
 
 app.use(router);

@@ -1,6 +1,6 @@
 const { Sequelize } = require('sequelize');
 require('dotenv').config();
-// Configuration de Sequelize avec les informations de connexion à la base de données
+// Configuring Sequelize with database connection information
 const sequelize = new Sequelize(
   process.env.DB_NAME,
   process.env.DB_USERNAME,
@@ -8,11 +8,11 @@ const sequelize = new Sequelize(
   {
     host: 'localhost',
     dialect: 'postgres',
-    // Ajoutez d'autres options si nécessaire
+    // Add other options if necessary
   }
 );
 
-// Test de la connexion à la base de données
+// Test the database connection
 async function testDBConnection() {
   try {
     await sequelize.authenticate();
@@ -20,7 +20,7 @@ async function testDBConnection() {
   } catch (error) {
     console.error('Impossible de se connecter à la base de données :', error);
   } finally {
-    // Assurez-vous de fermer la connexion après le test
+    // Make sure to close the connection after testing
     await sequelize.close();
   }
 }
@@ -28,8 +28,8 @@ async function testDBConnection() {
 console.log('DB_USERNAME:', process.env.DB_USERNAME);
 console.log('DB_PASSWORD:', process.env.DB_PASSWORD);
 
-// Appel de la fonction pour tester la connexion à la base de données
+// Call the function to test the connection to the database
 testDBConnection();
 
 
-//$ node test-db-connection.js pour test dans le terminal pour verifier connexion db avec sequelize
+//$ node test-db-connection.js for testing in the terminal to check db connection with sequelize

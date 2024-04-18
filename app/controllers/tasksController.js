@@ -9,7 +9,7 @@ const Task = require('../models/Tasks');
 const Users = require('../models/Users');
 
 const TaskController = {
-  // Crée une nouvelle tâche
+  // Create a new task
   async createTask(req, res) {
     if (!req.userId) {
       return res.status(401).json({ message: "Non autorisé. Veuillez vous connecter pour créer une nouvelle tache." });
@@ -22,7 +22,7 @@ const TaskController = {
     const { description, is_predefined, is_done, frequency, user_id } = req.body;
     let dueDate = dayjs();
     
-    // Détermine la due_date basée sur la fréquence
+    // Determine the due_date based on frequency
     if (frequency === 1) {
       dueDate = dueDate.add(1, 'day');
     } else if (frequency === 7) {
@@ -56,7 +56,7 @@ const TaskController = {
     }
   },
   
-  // Récupère toutes les tâches
+  // Get all tasks
   async getAllTasks(_, res) {
     try {
       const tasks = await Task.findAll();
@@ -66,7 +66,7 @@ const TaskController = {
     }
   },
   
-  // Met à jour une tâche spécifique
+  // Updates a specific task
   async updateTask(req, res) {
     if (!req.userId) {
       return res.status(401).json({ message: "Non autorisé. Veuillez vous connecter pour mettre à jour une nouvelle tache." });
@@ -87,7 +87,7 @@ const TaskController = {
       
       let dueDate = dayjs(task.created_at);
       
-      // Détermine la due_date basée sur la fréquence
+      // Determine the due_date based on frequency
       if (frequency === 1) {
         dueDate = dueDate.add(1, 'day');
       } else if (frequency === 7) {
@@ -98,12 +98,6 @@ const TaskController = {
         dueDate = dueDate.add(frequency, 'day');
       }
       const creatorUser = await Users.findByPk(task.user_id);
-      
-      console.log('Identifiant du user:', req.userId);
-      console.log('Identifiant du user associée à la task:', task.user_id);
-      
-      console.log('Identifiant de la coloc:', user.current_coloc_id); //  user qui veut update la task
-      console.log('Identifiant de la coloc associée au user:', creatorUser.current_coloc_id);
       
       if (req.userId === task.user_id || user.current_coloc_id === creatorUser.current_coloc_id) {
         await Task.update({
@@ -126,7 +120,7 @@ const TaskController = {
     }
   },
   
-  // Supprime une tâche spécifique
+  // Delete a specific task
   async deleteTask(req, res) {
     const { taskId } = req.params;
     

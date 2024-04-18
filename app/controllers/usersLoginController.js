@@ -18,17 +18,13 @@ exports.login = async (req, res) => {
         if (!user) {
             return res.status(400).json({ message: "L'utilisateur n'existe pas" });
         }
-        // Vérifier si le mot de passe est correct
+        // Check if the password is correct
         const validPassword = await bcrypt.compare(password, user.password);
         
         if (!validPassword) {
             return res.status(400).json({ message: "Mot de passe incorrect" });
         }
         
-        // Authentification réussie
-        
-        // Stockage de l'identifiant de l'utilisateur dans la session
-        // Stockage de l'identifiant de l'utilisateur dans le token JWT
         // Generate JWT Token
         const token = jwt.sign(
             { user_id: user.user_id },
@@ -42,13 +38,14 @@ exports.login = async (req, res) => {
                 firstname: user.firstname,
                 currentColocId: user.current_coloc_id,
             };
-            // Envoyer le cookie avec le JWT
+            // Send the cookie with the JWT
         res.cookie('token', token, {
             httpOnly: true,
-            secure: process.env.NODE_ENV === 'production', // Assurez-vous que 'secure' est vrai en production
-            sameSite: 'strict', // ou 'lax' selon votre besoin
-            maxAge: 3600000 // 1 heure en millisecondes
+            secure: process.env.NODE_ENV === 'production', 
+            sameSite: 'strict', 
+            maxAge: 3600000 
         });
+        // Authentication successful
         res.status(201).json({
             message: "Utilisateur connecté avec succès",
             token,

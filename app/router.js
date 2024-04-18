@@ -10,11 +10,11 @@ const { usersRouter, tasksRouter, colocsRouter, passwordResetRouter, authGoogleR
 
 const router = require('express').Router();
 
-app.get('/', (_, res) => {
-    res.send('Bienvenue sur Cohabit!');
-});
+// First test to see if it was functional
+// app.get('/', (_, res) => {
+//     res.send('Bienvenue sur Cohabit!');
+// });
 
-// j'utilise le routeur dédié aux Listes
 router.use(usersRouter);
 router.use(colocsRouter);
 router.use(tasksRouter);

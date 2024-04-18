@@ -3,12 +3,12 @@
 const authGoogleRouter = require('express').Router();
 const passport = require('passport');
 
-// Démarre l'authentification avec Google
+// Start authentication with Google
 authGoogleRouter.get('/auth/google', passport.authenticate('google', {
-    scope: ['profile', 'email'] // Demander l'accès au profil et à l'email de l'utilisateur
+    scope: ['profile', 'email'] // Request access to the user's profile and email
 }));
 
-// Le callback après que Google ait redirigé l'utilisateur
+// The callback after Google has redirected the user
 authGoogleRouter.get('/google/callback', passport.authenticate('google', {
     failureRedirect: '/login',
     successRedirect: '/'

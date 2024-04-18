@@ -14,25 +14,25 @@ passport.use(new GoogleStrategy(
 },
 async (accessToken, refreshToken, profile, done) => {
     try {
-        // Recherchez l'utilisateur dans votre base de données
+        // Find the user in your database
         let user = await User.findOne({ where: { google_id: profile.id } });
 
     if (user) {
-        // Si l'utilisateur existe déjà, vous pouvez choisir de mettre à jour son refreshToken
+        // If the user already exists, you can choose to update their refreshToken
         await user.update({ refreshToken });
     } else {
-        // Si l'utilisateur n'existe pas, créez un nouveau record utilisateur
+        // If the user does not exist, create a new user record
         user = await User.create({
             google_id: profile.id,
             name: profile.displayName,
             email: profile.emails[0].value,
             profile_image_url: profile.photos[0].value,
-            accessToken, // Stockez le accessToken si nécessaire pour votre application
-            refreshToken // Stockez le refreshToken pour une utilisation ultérieure
+            accessToken, // Store the accessToken if necessary for your application
+            refreshToken // Store the refreshToken for later use
         });
     }
 
-        return done(null, user); // L'utilisateur est passé au serializer de Passport
+        return done(null, user); // The user is switched to the Passport serializer
     } catch (error) {
         return done(error);
     }
@@ -40,7 +40,7 @@ async (accessToken, refreshToken, profile, done) => {
 ));
 
 passport.serializeUser((user, done) => {
-  done(null, user.id); // Serialise l'utilisateur par son ID
+  done(null, user.id); 
 });
 
 passport.deserializeUser(async (id, done) => {

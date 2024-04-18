@@ -7,7 +7,6 @@
 const express = require('express');
 const usersRouter = express.Router();
 
-// Importer les contrôleurs
 const { signup } = require('../controllers/usersSignupController');
 const { login } = require('../controllers/usersLoginController');
 const { updateProfile } = require('../controllers/usersUpdateController');
@@ -16,23 +15,22 @@ const { getProfile } = require('../controllers/usersGetProfile');
 const { logout } = require('../controllers/usersLogoutController');
 const authenticateToken = require('../../middlewares/authenticateToken');
 
-// Route pour l'inscription d'un nouvel utilisateur
+// Route for registering a new user
 usersRouter.post('/signup', signup);
 
-// Route pour la connexion de l'utilisateur
+// Route for user login
 usersRouter.post('/login', login);
 
-//Route pour la mise à jour du profil d'un utilisateur connecté
+//Route for updating the profile of a logged in user
 usersRouter.put('/profile', authenticateToken, updateProfile);
 
-//Route pour la suppression d'un compte utilisateur (utilisateur connecté)
+//Route for deleting a user account (logged in user)
 usersRouter.delete('/delete', authenticateToken, deleteProfile);
 
-//Route pour la consultation de la page profil par l'utilisateur
+//Route for viewing the profile page by the user
 usersRouter.get('/profile', authenticateToken, getProfile);
 
-//Route pour la deconnexion du user
+//Route for user logout
 usersRouter.post('/logout', authenticateToken, logout);
 
-// module.exports = usersRouter;
 module.exports = usersRouter;

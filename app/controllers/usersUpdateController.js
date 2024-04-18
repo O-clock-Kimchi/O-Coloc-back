@@ -1,33 +1,33 @@
 const Users = require('../models/Users');
 const bcrypt = require('bcrypt');
 
-// Fonction pour mettre à jour le profil de l'utilisateur, y compris le mot de passe
+// Function to update user profile including password
 exports.updateProfile = async (req, res) => {
     try {
-        // Vérifier si l'utilisateur est authentifié
+        // Check if the user is authenticated
         if (!req.userId) {
             return res.status(401).json({ message: "Non autorisé. Veuillez vous connecter pour mettre à jour votre profil." });
         }
 
         const { firstname, email, color, password } = req.body;
 
-        // Construire l'objet des modifications
+       // Construct the changes object
         const updates = {};
         if (firstname) updates.firstname = firstname;
         if (email) updates.email = email;
         if (color) updates.color = color;
         if (password) {
-            // Vérifier si le nouveau mot de passe respecte la regex
+            // Check if the new password respects the regex
             const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/;
             if (!passwordRegex.test(password)) {
                 return res.status(400).json({ message: "Le mot de passe doit contenir au moins 8 caractères, une lettre majuscule, une lettre minuscule et un chiffre." });
             }
-            // Hasher le nouveau mot de passe
+            // Hash the new password
             const hashedPassword = await bcrypt.hash(password, 10);
             updates.password = hashedPassword;
         }
 
-        // Mettre à jour le profil de l'utilisateur dans la base de données
+        // Update user profile in database
         await Users.update(updates, { where: { user_id: req.userId } });
 
         res.status(200).json({ message: "Profil mis à jour avec succès" });

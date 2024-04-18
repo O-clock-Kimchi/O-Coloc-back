@@ -26,7 +26,7 @@ module.exports = {
             color: {
                 type: Sequelize.STRING(7),
                 allowNull: false,
-                // unique: true
+                
             }
         });
     },
