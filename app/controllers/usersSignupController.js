@@ -42,7 +42,7 @@ exports.signup = async (req, res) => {
             color
         });
 
-        
+
         const accessToken = generateAccessToken(newUser.user_id);
         // Envoyer le cookie avec le JWT
         res.cookie('accessToken', accessToken, {
@@ -52,15 +52,6 @@ exports.signup = async (req, res) => {
             maxAge: 3600000 // 1 heure en millisecondes
         });
 
-
-        // const refreshToken = generateRefreshToken(newUser.user_id);
-        //     // Envoyer le cookie avec le Refresh Token
-        // res.cookie('refreshToken', refreshToken, {
-        //     httpOnly: true,
-        //     secure: process.env.NODE_ENV === 'production',
-        //     sameSite: 'strict',
-        //     maxAge: 7 * 24 * 60 * 60 * 1000 // 7 jours en millisecondes
-        // });
 
         res.status(201).json({
             message: "Utilisateur inscrit avec succès",

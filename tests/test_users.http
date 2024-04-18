@@ -59,4 +59,4 @@ Authorization : token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo3Nywia
 
 ### route pour générer un refresh token
 POST http://localhost:5000/refresh-Token
-Authorization : token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo3NywiaWF0IjoxNzEzNDQxMDkwLCJleHAiOjE3MTM0NDQ2OTB9.t7-H3i0Oaj95PwFFw_2vpuICqIYYsQOZN5WhDgVecFJk
+Authorization : token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo3NywiaWF0IjoxNzEzNDQyNDY3LCJleHAiOjE3MTM0NDYwNjd9.bafP_CaWqMXF3tSdtJOZDvSi8NFt76PikLng9Ys5jrg
