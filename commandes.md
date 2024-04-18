@@ -36,3 +36,6 @@ npm install jsonwebtoken
 
 <!-- Pour générer une chaîne aléatoire encodée en base64 pour la clé secrète -->
 openssl rand -base64 32
+
+<!-- installation de cookie parser pour la lecture des cookies notamment ceux pour la génération de accessToken et refreshToken -->
+npm i cookie-parser

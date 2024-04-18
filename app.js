@@ -38,10 +38,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Retirer express-session et configurer JWT pour l'authentification
-    // Assurez-vous que Passport utilise aussi JWT si c'est nécessaire pour la stratégie
+// Assurez-vous que Passport utilise aussi JWT si c'est nécessaire pour la stratégie
 app.use(passport.initialize());
+
 //middleware cookie-parser
 app.use(cookieParser());
+
 app.use(router);
 
 

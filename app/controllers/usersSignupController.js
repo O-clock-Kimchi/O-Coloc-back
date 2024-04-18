@@ -81,7 +81,7 @@ exports.signup = async (req, res) => {
         });
 
         res.status(201).json({
-            message: "Utilisateur connecté avec succès",
+            message: "Utilisateur inscrit avec succès",
             accessToken,
             refreshToken
         });
