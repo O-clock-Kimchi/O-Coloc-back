@@ -17,8 +17,8 @@ Content-Type: application/json
 
 
 {
-    "email":"fleur@index.com",
-    "password":"Fleur444!"  
+    "email":"EMMANUELLE@index.com",
+    "password":"Emmanuelle444!"  
 }
 
 ###creer route UPDATE en put/update
@@ -36,7 +36,7 @@ Authorization : Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo3Nywi
 
 ###creer route DELETE en delete
 DELETE http://localhost:5000/delete
-Authorization : token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo2NywiaWF0IjoxNzEzMjkxOTMwLCJleHAiOjE3MTM4OTY3MzB9.7jaHJ7XUoCL3SXWGLdHHJt4LSyh9ABIo956PkfFVH88
+Authorization : token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo3NiwiaWF0IjoxNzEzNDI5MjA4LCJleHAiOjE3MTM0MzI4MDh9.8YkK_nQfoCTVgCC6b8PPuD1k5k6EFYu2aNnwO-EXDM4
 
 ###creer route GET consultation Profil par le user
 GET http://localhost:5000/profile

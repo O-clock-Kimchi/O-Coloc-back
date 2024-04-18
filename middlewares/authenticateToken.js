@@ -4,30 +4,6 @@
 /* eslint-disable linebreak-style */
 // const jwt = require('jsonwebtoken');
 
-// function authenticateToken(req, res, next) {
-//     const authHeader = req.headers.authorization;
-//     const token = authHeader && authHeader.split(' ')[1]; // Bearer TOKEN
-
-//     if (token == null) {
-//         return res.sendStatus(401); // Aucun token, non autorisé
-//     }
-
-//     jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
-//         if (err) {
-//             // Vérifier le refresh token ici
-//             const refreshToken = req.cookies.refreshToken; // Récupérer le refresh token depuis les cookies (ou autre source)
-//             if (!refreshToken) {            
-//             return res.sendStatus(403); // Token invalide
-//             }
-//         req.userId = user.user_id;
-//         req.user = Object.assign({}, user);
-//         delete req.user.password;
-//         next();
-//         }
-//     });
-// }
-
-// module.exports = authenticateToken;
 
 const jwt = require('jsonwebtoken');
 const Users = require('../app/models/Users');

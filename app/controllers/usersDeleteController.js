@@ -1,4 +1,5 @@
 const Users = require('../models/Users');
+const jwt = require('jsonwebtoken');
 
 // Fonction pour supprimer le profil de l'utilisateur
 exports.deleteProfile = async (req, res) => {
@@ -12,7 +13,8 @@ exports.deleteProfile = async (req, res) => {
         await Users.destroy({ where: { user_id: req.userId } });
         
         // Déconnecter l'utilisateur en supprimant ses informations de session
-        res.clearCookie('jwt');
+        res.clearCookie('accessToken');
+        res.clearCookie('refreshToken');
 
         res.status(200).json({ message: "Profil supprimé avec succès" });
     } catch (error) {
