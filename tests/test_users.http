@@ -48,7 +48,7 @@ Authorization : token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo3LCJpY
 
 ###Route pour recuperer tous les tasks d'une coloc
 GET http://localhost:5000/colocs/10/tasks
-Authorization : token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo3LCJpYXQiOjE3MTMyNTg5MTcsImV4cCI6MTcxMzI2MjUxN30.FarMaknLtLlJxsz8X1NYUrgN0w5NhOdjgUdTYsHiNxQ
+Authorization : token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyNCwiaWF0IjoxNzEzNTMxMTQ2LCJleHAiOjE3MTM1MzEyMDZ9.Uhv6ObS7oZJ5f9lN9PLvR7xYQrJMDdIPlNpOei-eDHE
 
 
 ### route pour deconnexion user
@@ -59,4 +59,4 @@ Authorization : token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo3Nywia
 
 ### route pour générer un refresh token
 POST http://localhost:5000/refresh-Token
-Authorization : token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo3NywiaWF0IjoxNzEzNTE4MzkyLCJleHAiOjE3MTM1MTg0NTJ9.j7LTMwkeg5Onpd69zRAEXySe_WxDsgP7Bx6N_FX46_o
+Authorization : token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyNCwiaWF0IjoxNzEzNTMxMjM0LCJleHAiOjE3MTM1MzEyOTR9.a2psK8S3FFWq9G26XRbG1t-Rl6FPLvZsap08O2QYHNU
