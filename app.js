@@ -5,10 +5,15 @@ const express = require('express');
 const passport = require('passport');
 require('./config/passport-setup'); // Configure Passport, make sure this also uses JWT if necessary
 const cors = require('cors');
+const cookieParser = require('cookie-parser');
+
+
 
 const allowedOrigins = ['http://localhost:5173', 'http://localhost:5174'];
 
 const app = express();
+
+
 const router = require('./app/router.js');
 
 require('dotenv').config();
@@ -29,13 +34,18 @@ app.use(cors({
 }));
 
 app.use(express.json());
+
 app.use(express.urlencoded({ extended: true }));
 
 // Remove express-session and configure JWT for authentication
 // Make sure Passport also uses JWT if it's necessary for the policy
 app.use(passport.initialize());
 
+//middleware cookie-parser
+app.use(cookieParser());
+
 app.use(router);
+
 
 app.set('port', process.env.PORT || 5000);
 app.set('base_url', process.env.BASE_URL || 'http://localhost');

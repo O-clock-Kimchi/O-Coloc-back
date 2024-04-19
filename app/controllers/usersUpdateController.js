@@ -6,6 +6,8 @@ exports.updateProfile = async (req, res) => {
     try {
         // Check if the user is authenticated
         if (!req.userId) {
+            console.error('Échec de l\'authentification pour la mise à jour du profil'); // Log pour le débogage
+            
             return res.status(401).json({ message: "Non autorisé. Veuillez vous connecter pour mettre à jour votre profil." });
         }
 

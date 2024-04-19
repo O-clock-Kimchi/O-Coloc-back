@@ -3,12 +3,15 @@
 /* eslint-disable padded-blocks */
 /* eslint-disable eol-last */
 /* eslint-disable keyword-spacing */
+const Users= require('../models/Users');
+const jwt = require('jsonwebtoken');
 
 // User logout
 exports.logout = (req, res) => {
     try {
         // Delete the cookie containing the JWT token
-        res.clearCookie('jwt');
+        res.clearCookie('accessToken');
+        res.clearCookie('refreshToken');
 
         // Reply with a success message
         res.status(200).json({ message: 'Déconnexion réussie avec succès' });

@@ -5,6 +5,7 @@
 const Users = require('../models/Users');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const { generateAccessToken } = require('../utils/tokenService');
 
 // Function to create a new user
 exports.signup = async (req, res) => {
@@ -41,23 +42,20 @@ exports.signup = async (req, res) => {
             color
         });
 
-        // Generate JWT Token
-        const token = jwt.sign(
-            { user_id: newUser.user_id },
-            process.env.ACCESS_TOKEN_SECRET,
-            { expiresIn: '1h' } // Configure the token to be valid for 1 hour
-        );
-        
-            // Send the cookie with the JWT
-        res.cookie('token', token, {
+ 
+        const accessToken = generateAccessToken(newUser.user_id);
+        // Send the cookie with the JWT
+        res.cookie('accessToken', accessToken, {
             httpOnly: true,
             secure: process.env.NODE_ENV === 'production', 
             sameSite: 'strict', 
             maxAge: 3600000 
         });
+
+
         res.status(201).json({
-            message: "Utilisateur connecté avec succès",
-            token
+            message: "Utilisateur inscrit avec succès",
+            accessToken
         });
     } catch (error) {
         console.error(error);

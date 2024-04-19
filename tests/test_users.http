@@ -4,9 +4,9 @@ Content-Type: application/json
 
 
 {
-    "firstname":"testi",
-    "email":"teste.4870@gmail.com",
-    "password":"TTesti40&",
+    "firstname":"EMMANUELLE",
+    "email":"EMMANUELLE@index.com",
+    "password":"Emmanuelle444!",
     "color": "#343434"
     
 }
@@ -17,19 +17,18 @@ Content-Type: application/json
 
 
 {
-    "email":"teste.4870@gmail.com",
-    "password":"TTesti40&"  
+    "email":"EMMANUELLE@index.com",
+    "password":"Emmanuelle444!"  
 }
 
 ###creer route UPDATE en put/update
 
 PUT http://localhost:5000/profile
-Authorization : token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo3LCJpYXQiOjE3MTMyNTg5MTcsImV4cCI6MTcxMzI2MjUxN30.FarMaknLtLlJxsz8X1NYUrgN0w5NhOdjgUdTYsHiNxQ
 Content-Type: application/json
-
+Authorization : Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo3NywiaWF0IjoxNzEzNTE4MzkyLCJleHAiOjE3MTM1MTg0NTJ9.j7LTMwkeg5Onpd69zRAEXySe_WxDsgP7Bx6N_FX46_o
 
 {
-    "firstname": "TestUpDate",
+    "firstname": "EMMANUELLE 88",
     "email": "",
     "color": "",
     "password": ""
@@ -37,11 +36,11 @@ Content-Type: application/json
 
 ###creer route DELETE en delete
 DELETE http://localhost:5000/delete
-Authorization : token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo4LCJpYXQiOjE3MTMyNTk1MjksImV4cCI6MTcxMzI2MzEyOX0.jqmJKgA62AoMxlvzmN1Bsoc65LBGpUcYY4bAw5pAY88
+Authorization : token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo3NiwiaWF0IjoxNzEzNDI5MjA4LCJleHAiOjE3MTM0MzI4MDh9.8YkK_nQfoCTVgCC6b8PPuD1k5k6EFYu2aNnwO-EXDM4
 
 ###creer route GET consultation Profil par le user
 GET http://localhost:5000/profile
-Authorization : token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo3LCJpYXQiOjE3MTMyNTg5MTcsImV4cCI6MTcxMzI2MjUxN30.FarMaknLtLlJxsz8X1NYUrgN0w5NhOdjgUdTYsHiNxQ
+Authorization : token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo3NywiaWF0IjoxNzEzNTE4MzU4LCJleHAiOjE3MTM1MTg0MTh9.tMDy165jhBJcIYgJN_gtIetQgLRshpqSDc5V1uA9lnk
 
 ###Route pour recuperer tous les users d'une coloc
 GET http://localhost:5000/colocs/10/users
@@ -54,8 +53,10 @@ Authorization : token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo3LCJpY
 
 ### route pour deconnexion user
 
-POST http://localhost:5000/user/4/logout
-Authorization : token xxx
+POST http://localhost:5000/logout
+Authorization : token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo3NywiaWF0IjoxNzEzNTE4MjI5LCJleHAiOjE3MTM1MTgyODl9.1skS7yiCki1ObAeG7vlDAtE-gm5h69jFFxZ0q8T5LII
 
-###route pour un refresh token
-GET http://localhost:5000/refresh-token
+
+### route pour générer un refresh token
+POST http://localhost:5000/refresh-Token
+Authorization : token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo3NywiaWF0IjoxNzEzNTE4MzkyLCJleHAiOjE3MTM1MTg0NTJ9.j7LTMwkeg5Onpd69zRAEXySe_WxDsgP7Bx6N_FX46_o

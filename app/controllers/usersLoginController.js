@@ -6,6 +6,7 @@
 const Users = require('../models/Users');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const { generateAccessToken } = require('../utils/tokenService');
 
 // Function for user authentication
 exports.login = async (req, res) => {
@@ -25,12 +26,7 @@ exports.login = async (req, res) => {
             return res.status(400).json({ message: "Mot de passe incorrect" });
         }
         
-        // Generate JWT Token
-        const token = jwt.sign(
-            { user_id: user.user_id },
-            process.env.ACCESS_TOKEN_SECRET,
-            { expiresIn: '1h' } // Configure the token to be valid for 1 hour
-            );
+
             const userToSend = {
                 userId: user.user_id,
                 email: user.email,
@@ -38,8 +34,11 @@ exports.login = async (req, res) => {
                 firstname: user.firstname,
                 currentColocId: user.current_coloc_id,
             };
-            // Send the cookie with the JWT
-        res.cookie('token', token, {
+
+        
+        const accessToken = generateAccessToken(user.user_id);
+        // Send the cookie with the JWT
+        res.cookie('accessToken', accessToken, {
             httpOnly: true,
             secure: process.env.NODE_ENV === 'production', 
             sameSite: 'strict', 
@@ -48,9 +47,10 @@ exports.login = async (req, res) => {
         // Authentication successful
         res.status(201).json({
             message: "Utilisateur connecté avec succès",
-            token,
-            user: userToSend,
-          });
+            accessToken,
+            user: userToSend
+
+        });
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: "Erreur de serveur" });
