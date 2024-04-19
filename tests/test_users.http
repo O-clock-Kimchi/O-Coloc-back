@@ -25,7 +25,7 @@ Content-Type: application/json
 
 PUT http://localhost:5000/profile
 Content-Type: application/json
-Authorization : Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo3NywiaWF0IjoxNzEzNTE4MzkyLCJleHAiOjE3MTM1MTg0NTJ9.j7LTMwkeg5Onpd69zRAEXySe_WxDsgP7Bx6N_FX46_o
+Authorization : Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo3NywiaWF0IjoxNzEzNTMzOTU0LCJleHAiOjE3MTM1Mzc1NTR9.JU8lHK384zElYGlSepGnkVHL101IKqq1sbNru1MubPE
 
 {
     "firstname": "EMMANUELLE 88",
@@ -40,7 +40,7 @@ Authorization : token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo3Niwia
 
 ###creer route GET consultation Profil par le user
 GET http://localhost:5000/profile
-Authorization : token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo3NywiaWF0IjoxNzEzNTE4MzU4LCJleHAiOjE3MTM1MTg0MTh9.tMDy165jhBJcIYgJN_gtIetQgLRshpqSDc5V1uA9lnk
+Authorization : token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo3NywiaWF0IjoxNzEzNTMyMDMyLCJleHAiOjE3MTM1MzU2MzJ9.cJrZC0wniiU02Yz5NcALbaBdv-uIkOhaM2UzfY-dbhw
 
 ###Route pour recuperer tous les users d'une coloc
 GET http://localhost:5000/colocs/10/users
@@ -54,9 +54,9 @@ Authorization : token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyNCwia
 ### route pour deconnexion user
 
 POST http://localhost:5000/logout
-Authorization : token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo3NywiaWF0IjoxNzEzNTE4MjI5LCJleHAiOjE3MTM1MTgyODl9.1skS7yiCki1ObAeG7vlDAtE-gm5h69jFFxZ0q8T5LII
+Authorization : token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo3NywiaWF0IjoxNzEzNTMyMDMyLCJleHAiOjE3MTM1MzU2MzJ9.cJrZC0wniiU02Yz5NcALbaBdv-uIkOhaM2UzfY-dbhw
 
 
 ### route pour générer un refresh token
 POST http://localhost:5000/refresh-Token
-Authorization : token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyNCwiaWF0IjoxNzEzNTMxMjM0LCJleHAiOjE3MTM1MzEyOTR9.a2psK8S3FFWq9G26XRbG1t-Rl6FPLvZsap08O2QYHNU
+Authorization : token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo3NywiaWF0IjoxNzEzNTMzOTU0LCJleHAiOjE3MTM1Mzc1NTR9.JU8lHK384zElYGlSepGnkVHL101IKqq1sbNru1MubPE

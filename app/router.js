@@ -2,9 +2,6 @@
 /* eslint-disable import/order */
 /* eslint-disable linebreak-style */
 /* eslint-disable eol-last */
-const express = require('express');
-
-const app = express();
 
 const { usersRouter, tasksRouter, colocsRouter, passwordResetRouter, authGoogleRouter, userColocTaskRouter } = require('./routers');
 

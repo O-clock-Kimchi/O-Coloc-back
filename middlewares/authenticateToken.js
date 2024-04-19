@@ -11,13 +11,13 @@ const Users = require('../app/models/Users');
 
 function authenticateToken(req, res, next) {
     const authHeader = req.headers.authorization;
-    console.log(req.headers);
+
     //* allows you to retrieve the token in the header, here we do not use cookies because they are not on the same front/back PORT.
     
     const accessToken = authHeader && authHeader.split(' ')[1]; // Extraction of the token
 
 
-    console.log(accessToken);
+
     if (!accessToken) {
         return res.status(401).json({ message: "Aucun jeton d'accès fourni. Veuillez vous connecter pour accéder à cette ressource." });
     }
