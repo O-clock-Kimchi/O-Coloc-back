@@ -37,7 +37,7 @@ usersRouter.get('/profile', authenticateToken, getProfile);
 usersRouter.post('/logout', authenticateToken, logout);
 
 //Route pour refresh Token
-usersRouter.post('/refresh-token', authenticateForRefreshToken, refreshToken);
+usersRouter.post('/refresh-token', authenticateToken, refreshToken);
 
 // module.exports = usersRouter;
 module.exports = usersRouter;
