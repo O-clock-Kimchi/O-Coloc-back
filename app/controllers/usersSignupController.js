@@ -4,7 +4,6 @@
 /* eslint-disable comma-dangle */
 const Users = require('../models/Users');
 const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
 const { generateAccessToken } = require('../utils/tokenService');
 
 // Function to create a new user

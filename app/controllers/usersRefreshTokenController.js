@@ -1,18 +1,17 @@
 const { generateAccessToken } = require('../utils/tokenService');
-const jwt = require('jsonwebtoken');
 
 exports.refreshToken = async (req, res) => {
     try {
-        // Vérifier l'authentification de l'utilisateur (access token)
-        const userId = req.userId; // Supposons que le middleware d'authentification a déjà placé l'ID de l'utilisateur dans req.userId
+        // Check user authentication (access token)
+        const userId = req.userId; // Assume that the authentication middleware has already placed the user ID in req.userId
 
-        // Générer un nouveau access token
+        // Generate a new access token
         const newAccessToken = generateAccessToken(userId);
 
-        // Répondre avec le nouvel access token
+        // Reply with the new access token
         res.status(200).json({ message: "Nouvel access token généré avec succès", accessToken: newAccessToken });
     } catch (error) {
-        // Gestion des erreurs
+        // Error management
         console.error(error);
         res.status(500).json({ message: "Erreur lors de la génération du nouvel access token" });
     }

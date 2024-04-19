@@ -12,9 +12,9 @@ const Users = require('../app/models/Users');
 function authenticateToken(req, res, next) {
     const authHeader = req.headers.authorization;
     console.log(req.headers);
-    //* permet de récupérer le token dans le header, ici on n'utilise pas les cookies car pas sur le même PORT front/back.
+    //* allows you to retrieve the token in the header, here we do not use cookies because they are not on the same front/back PORT.
     
-    const accessToken = authHeader && authHeader.split(' ')[1]; // Extraction du token
+    const accessToken = authHeader && authHeader.split(' ')[1]; // Extraction of the token
 
 
     console.log(accessToken);
@@ -31,7 +31,7 @@ function authenticateToken(req, res, next) {
                 if (!user) {
                     return res.status(404).json({ message: "Utilisateur introuvable." });
                 }
-                req.userId = user.user_id; // Attribuer l'ID de l'utilisateur à la requête
+                req.userId = user.user_id; // Assign the user ID to the request
                 next();
             } catch (error) {
                 console.error(error);

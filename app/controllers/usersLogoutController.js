@@ -3,8 +3,7 @@
 /* eslint-disable padded-blocks */
 /* eslint-disable eol-last */
 /* eslint-disable keyword-spacing */
-const Users= require('../models/Users');
-const jwt = require('jsonwebtoken');
+
 
 // User logout
 exports.logout = (req, res) => {

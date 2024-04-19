@@ -5,7 +5,6 @@
 /* eslint-disable eol-last */
 const Users = require('../models/Users');
 const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
 const { generateAccessToken } = require('../utils/tokenService');
 
 // Function for user authentication

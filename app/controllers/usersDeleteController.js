@@ -1,5 +1,4 @@
 const Users = require('../models/Users');
-const jwt = require('jsonwebtoken');
 
 // Function to delete user profile
 exports.deleteProfile = async (req, res) => {
