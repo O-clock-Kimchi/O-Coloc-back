@@ -25,7 +25,7 @@ Content-Type: application/json
 
 PUT http://localhost:5000/profile
 Content-Type: application/json
-Authorization : Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo3NywiaWF0IjoxNzEzNDQxMDkwLCJleHAiOjE3MTM0NDQ2OTB9.t7-H3i0Oaj95PwFFw_2vpuICqIYYsQOZN5WhgVecFJk
+Authorization : Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo3NywiaWF0IjoxNzEzNTE4MzkyLCJleHAiOjE3MTM1MTg0NTJ9.j7LTMwkeg5Onpd69zRAEXySe_WxDsgP7Bx6N_FX46_o
 
 {
     "firstname": "EMMANUELLE 88",
@@ -40,7 +40,7 @@ Authorization : token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo3Niwia
 
 ###creer route GET consultation Profil par le user
 GET http://localhost:5000/profile
-Authorization : token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo2NywiaWF0IjoxNzEzMjkxOTMwLCJleHAiOjE3MTM4OTY3MzB9.7jaHJ7XUoCL3SXWGLdHHJt4LSyh9ABIo956PkfFVH88
+Authorization : token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo3NywiaWF0IjoxNzEzNTE4MzU4LCJleHAiOjE3MTM1MTg0MTh9.tMDy165jhBJcIYgJN_gtIetQgLRshpqSDc5V1uA9lnk
 
 ###Route pour recuperer tous les users d'une coloc
 GET http://localhost:5000/colocs/10/users
@@ -54,9 +54,9 @@ Authorization : token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo3LCJpY
 ### route pour deconnexion user
 
 POST http://localhost:5000/logout
-Authorization : token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo3NywiaWF0IjoxNzEzNTE3NzY2LCJleHAiOjE3MTM1MjEzNjZ9.TtHRwxMydeMfEyrMSwpCWuhf84Bs7UghbtK4hxhoHfw
+Authorization : token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo3NywiaWF0IjoxNzEzNTE4MjI5LCJleHAiOjE3MTM1MTgyODl9.1skS7yiCki1ObAeG7vlDAtE-gm5h69jFFxZ0q8T5LII
 
 
 ### route pour générer un refresh token
 POST http://localhost:5000/refresh-Token
-Authorization : token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo3NywiaWF0IjoxNzEzNTE3NzY2LCJleHAiOjE3MTM1MjEzNjZ9.TtHRwxMydeMfEyrMSwpCWuhf84Bs7UghbtK4hxhoHfw
+Authorization : token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo3NywiaWF0IjoxNzEzNTE4MzkyLCJleHAiOjE3MTM1MTg0NTJ9.j7LTMwkeg5Onpd69zRAEXySe_WxDsgP7Bx6N_FX46_o

@@ -15,7 +15,6 @@ const { deleteProfile } = require('../controllers/usersDeleteController');
 const { getProfile } = require('../controllers/usersGetProfile');
 const { logout } = require('../controllers/usersLogoutController');
 const authenticateToken = require('../../middlewares/authenticateToken');
-const authenticateForRefreshToken = require('../../middlewares/authenticateForRefreshToken');
 const { refreshToken } = require('../controllers/usersRefreshTokenController');
 
 // Route pour l'inscription d'un nouvel utilisateur
