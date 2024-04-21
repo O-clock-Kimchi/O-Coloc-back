@@ -3,7 +3,7 @@
 /* eslint-disable linebreak-style */
 const express = require('express');
 const passport = require('passport');
-require('./config/passport-setup'); // Configure Passport, make sure this also uses JWT if necessary
+// require('./config/passport-setup'); // Configure Passport, make sure this also uses JWT if necessary
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
 

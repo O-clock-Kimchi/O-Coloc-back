@@ -25,7 +25,6 @@ exports.login = async (req, res) => {
             return res.status(400).json({ message: "Mot de passe incorrect" });
         }
         
-
             const userToSend = {
                 userId: user.user_id,
                 email: user.email,
@@ -34,7 +33,6 @@ exports.login = async (req, res) => {
                 currentColocId: user.current_coloc_id,
             };
 
-        
         const accessToken = generateAccessToken(user.user_id);
         // Send the cookie with the JWT
         res.cookie('accessToken', accessToken, {
