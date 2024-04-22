@@ -133,4 +133,3 @@ const PasswordResetController = {
 };
     
     module.exports = PasswordResetController;
-    
