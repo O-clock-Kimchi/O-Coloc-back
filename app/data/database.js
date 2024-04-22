@@ -17,7 +17,7 @@ const getConnexion = new Sequelize(
             updatedAt: 'updated_at',
             underscored: true,
         },
-            host: 'localhost',
+            host: process.env.DB_HOST,
             dialect: 'postgres',
             logging: (message) => console.log(new Date().toISOString() + ': ' + message),
 });

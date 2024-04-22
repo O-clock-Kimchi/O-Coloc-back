@@ -14,10 +14,16 @@
         "dialect": "postgres"
     },
     "production": {
-        "username": "cohabit_admin",
-        "password": "moucherons",
-        "database": "cohabit",
-        "host": "127.0.0.1",
-        "dialect": "postgres"
+        "username": "${DB_USERNAME}",
+        "password": "${DB_PASSWORD}",
+        "database": "${DB_NAME}",
+        "host": "${DB_HOST}",
+        "dialect": "postgres",
+        "dialectOptions": {
+            "ssl": {
+                "require": true,
+                "rejectUnauthorized": false
+                }
+        }
     }
 }
