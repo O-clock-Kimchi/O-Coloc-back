@@ -7,12 +7,9 @@ const passport = require('passport');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
 
-
-
-const allowedOrigins = ['http://localhost:5173', 'http://localhost:5174'];
+const allowedOrigins = ['http://localhost:5173', 'http://localhost:5174', 'https://o-coloc-front.onrender.com'];
 
 const app = express();
-
 
 const router = require('./app/router.js');
 
@@ -45,7 +42,6 @@ app.use(passport.initialize());
 app.use(cookieParser());
 
 app.use(router);
-
 
 app.set('port', process.env.PORT || 5000);
 app.set('base_url', process.env.BASE_URL || 'http://localhost');
