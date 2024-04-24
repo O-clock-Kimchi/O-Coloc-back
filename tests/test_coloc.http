@@ -1,16 +1,16 @@
 ###creer coloc en post
 POST http://localhost:5000/colocs/create
-Authorization : token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo3NywiaWF0IjoxNzEzNDI5OTIyLCJleHAiOjE3MTM0MzM1MjJ9.kcpUY81NUxNd0KoWjIxIru2wR0UlE2FyV4oZZz1Y5FU
+Authorization : token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjozLCJpYXQiOjE3MTM4ODY3NjAsImV4cCI6MTcxMzg5MDM2MH0.lk1jiG7wb91ezWo2bqLcZuPgN4rI58szoV-iVk3bWt8
 Content-Type: application/json
 
 {
     
-    "name": "HOLA"
+    "name": "HOL"
 }
 
 ###recuperer une coloc
 GET http://localhost:5000/colocs/3
-Authorization : token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo2OSwiaWF0IjoxNzEzMjk2MzYxLCJleHAiOjE3MTM5MDExNjF9._t_Htnv3dCzzL5FNmyoeQdJ8_uA0keusWuZoTMVru14
+Authorization : token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjozLCJpYXQiOjE3MTM4ODY3NjAsImV4cCI6MTcxMzg5MDM2MH0.lk1jiG7wb91ezWo2bqLcZuPgN4rI58szoV-iVk3bWt8
 Content-Type: application/json
 
 ###mettre a jour coloc

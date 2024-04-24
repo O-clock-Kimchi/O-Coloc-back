@@ -21,9 +21,6 @@ const colocController = {
     // Reclaim our coloc
     async show(req, res) {
         try {
-            if (!req.userId) {
-                return res.status(401).json({ message: "Non autorisé. Veuillez vous connecter pour recupérer votre coloc." });
-            }
             const user = await Users.findOne({where:{user_id:req.userId}});
             
             if (!user) {
@@ -39,8 +36,6 @@ const colocController = {
             }
 
             const colocId = user.current_coloc_id;
-            console.log('Identifiant de la colocation:', coloc.coloc_id);
-            console.log('Identifiant de la colocation associée à l\'utilisateur:', colocId);
 
             if (coloc.coloc_id === colocId) {
                 res.json(coloc);
@@ -103,9 +98,6 @@ const colocController = {
     async create(req, res) {
         try {
             const { name } = req.body;
-            if (!req.userId) {
-                return res.status(401).json({ message: "Non autorisé. Veuillez vous connecter pour créer une coloc." });
-            }
             if (!isValidName(name)) {
                 return res.status(400).json({ message: "Le nom de la colocation doit faire au minimum 4 caractères." });
             }
@@ -138,9 +130,6 @@ const colocController = {
             const { groupe_code_valid } = req.body;
             const coloc = await Colocs.findOne({ where: { groupe_code_valid } });
             
-            if (!req.userId) {
-                return res.status(401).json({ message: "Non autorisé. Veuillez vous connecter pour rejoindre une coloc." });
-            }
             const user = await Users.findByPk(req.userId);
             if (user.current_coloc_id){
                 return res.status(400).json({ message: "Vous êtes déjà membre d'une coloc!" });
@@ -164,9 +153,6 @@ const colocController = {
     // leave a coloc
     async handleUserLeave(req, res){
         try{
-            if (!req.userId) {
-                return res.status(401).json({ message: "Non autorisé. Veuillez vous connecter pour quitter une coloc." });
-            }
             const user = await Users.findOne({where:{user_id:req.userId}});
 
             if (!user) {
@@ -195,24 +181,21 @@ const colocController = {
     },
     async generateNewCode(req, res) {
         try {
-          const id = req.params.id;
-          const coloc = await Colocs.findByPk(id);
-          if (coloc) {
-            const code = Math.floor(10000000 + Math.random() * 90000000)
-              .toString()
-              .substring(0, 8);
-            await coloc.update({ lien_coloc: code, groupe_code_valid: code });
-            res
-              .status(200)
-              .json({ message: "Changement de code effectué", newCode: code });
-          } else {
-            res.status(404).json({
-              message:
-                "Colocation non trouvée lors de la génération du code pour la colocation ",
-            });
-          }
+            const id = req.params.id;
+            const coloc = await Colocs.findByPk(id);
+            if (coloc) {
+                const code = Math.floor(10000000 + Math.random() * 90000000).toString().substring(0, 8);
+                await coloc.update({ lien_coloc: code, groupe_code_valid: code });
+                res
+                    .status(200)
+                    .json({ message: "Changement de code effectué", newCode: code });
+            } else {
+                res.status(404).json({
+                    message:"Colocation non trouvée lors de la génération du code pour la colocation ",
+                });
+            }
         } catch (error) {
-          res.status(500).json({ message: "Une erreur est survenue" });
+            res.status(500).json({ message: "Une erreur est survenue" });
         }
     }
 };
