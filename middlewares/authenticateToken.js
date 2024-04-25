@@ -4,7 +4,6 @@
 /* eslint-disable linebreak-style */
 // const jwt = require('jsonwebtoken');
 
-
 const jwt = require('jsonwebtoken');
 const Users = require('../app/models/Users');
 
