@@ -38,7 +38,7 @@ Authorization : token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo3LCJpY
 # ------------ RESET PASSWORD -------------------
 
 ### Demande de réinitialisation du mot de passe
-POST http://172.25.192.189:5000/request-reset
+GET http://172.25.192.189:5000/request-reset
 Content-Type: application/json
 
 {
