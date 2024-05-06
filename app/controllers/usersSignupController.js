@@ -46,7 +46,7 @@ exports.signup = async (req, res) => {
         res.cookie('accessToken', accessToken, {
             httpOnly: true,
             secure: process.env.NODE_ENV === 'production',
-            sameSite: 'strict',
+            sameSite: 'Lax',
             maxAge: 3600000
         });
 
