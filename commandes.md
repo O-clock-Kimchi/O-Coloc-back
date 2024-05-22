@@ -7,9 +7,9 @@ npm i @faker-js/faker
 npm install --save-dev sequelize-cli
 <!-- Créer/exécuter les tables dans la base de données -->
 <!-- Effectuer la migration dans l'ordre des tables en spécifiant le nom du fichier -->
-npx sequelize-cli db:migrate
 npx sequelize-cli db:migrate --to 20240329-create-users.js --from 20240329-create-tasks.js
 npx sequelize-cli db:migrate --to 20240329-create-tasks.js
+npx sequelize-cli db:migrate
 
 <!-- Fonctionnalité de correction automatique pour certaines règles -->
 npx eslint . --fix
@@ -39,3 +39,6 @@ openssl rand -base64 32
 
 <!-- installation de cookie parser pour la lecture des cookies notamment ceux pour la génération de accessToken et refreshToken -->
 npm i cookie-parser
+
+<!-- J'effectue ma migration sur l'environnement de production, c'est à dire la BDD Render utilisée pour le deploy -->
+sequelize db:migrate --env production

@@ -14,10 +14,10 @@
         "dialect": "postgres"
     },
     "production": {
-        "username": "${DB_USERNAME}",
-        "password": "${DB_PASSWORD}",
-        "database": "${DB_NAME}",
-        "host": "${DB_HOST}",
+        "username": "cohabit_admin",
+        "password": "mFli49oTrgdkZwrw0pC9JgTIDdDGNIQJ",
+        "database": "cohabit",
+        "host": "dpg-coj8h7m3e1ms73fptgm0-a.oregon-postgres.render.com",
         "dialect": "postgres",
         "dialectOptions": {
             "ssl": {
